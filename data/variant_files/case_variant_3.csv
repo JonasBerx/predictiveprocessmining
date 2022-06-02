@@ -1,0 +1,400 @@
+case_id,start_time,end_time,claim_value,product_group,Activity,Resource,role
+1,2020-01-01T00:00:00,2020-01-01T00:37:00,5813.21, Motor, Register Claim,Lexi Larsen,Claims Administrator
+1,2020-01-01T05:37:00,2020-01-01T05:45:00,5813.21, Motor, Quick Assessment,Lexi Larsen,Claims Officer
+1,2020-01-01T06:41:00,2020-01-01T06:55:00,5813.21, Motor, Finalize Assessment,Karter Chapman,Claims Officer
+1,2020-01-01T23:13:00,2020-01-01T23:13:00,5813.21, Motor, Approve Assessment,Morgan Roach,Operations Manager
+1,2020-01-02T01:22:00,2020-01-02T09:20:00,5813.21, Motor, Prepare Claim Settlement,Alyvia Berger,Operations Manager
+1,2020-01-03T11:20:00,2020-01-03T11:21:00,5813.21, Motor, Approve Claim Settlement,Rachael Tanner,Product Manager
+1,2020-01-04T00:54:00,2020-01-04T00:54:00,5813.21, Motor, Execute Claim Settlement,Katelyn Pitts,Claims Administrator
+10,2020-01-02T02:52:00,2020-01-02T03:43:00,5122.11, Motor, Register Claim,Roland Salazar,Claims Administrator
+10,2020-01-02T10:25:00,2020-01-02T10:32:00,5122.11, Motor, Quick Assessment,Nathanial Oliver,Claims Officer
+10,2020-01-02T15:32:00,2020-01-02T15:59:00,5122.11, Motor, Finalize Assessment,Alyvia Berger,Claims Officer
+10,2020-01-03T22:05:00,2020-01-03T22:05:00,5122.11, Motor, Approve Assessment,Aria Bonilla,Operations Manager
+10,2020-01-03T23:53:00,2020-01-04T04:31:00,5122.11, Motor, Prepare Claim Settlement,Karter Chapman,Operations Manager
+10,2020-01-07T08:54:00,2020-01-07T08:55:00,5122.11, Motor, Approve Claim Settlement,Morgan Roach,Product Manager
+10,2020-01-10T00:23:00,2020-01-10T00:23:00,5122.11, Motor, Execute Claim Settlement,Mariam Tate,Claims Administrator
+102,2020-01-13T13:17:00,2020-01-13T13:26:00,6514.15, Motor, Register Claim,Bailee Barr,Claims Administrator
+102,2020-01-13T14:13:00,2020-01-13T14:20:00,6514.15, Motor, Quick Assessment,Matilda Escobar,Claims Officer
+102,2020-01-16T19:32:00,2020-01-16T19:48:00,6514.15, Motor, Finalize Assessment,Alyvia Berger,Claims Officer
+102,2020-01-18T07:58:00,2020-01-18T07:58:00,6514.15, Motor, Approve Assessment,Mitchell Mckay,Operations Manager
+102,2020-01-18T09:57:00,2020-01-18T21:36:00,6514.15, Motor, Prepare Claim Settlement,Karter Chapman,Operations Manager
+102,2020-01-20T11:38:00,2020-01-20T11:39:00,6514.15, Motor, Approve Claim Settlement,Morgan Roach,Product Manager
+102,2020-01-22T07:39:00,2020-01-22T07:39:00,6514.15, Motor, Execute Claim Settlement,Katelyn Pitts,Claims Administrator
+1031,2020-05-30T16:38:00,2020-05-30T16:57:00,8037.85, Motor, Register Claim,Dallas Melendez,Claims Administrator
+1031,2020-05-30T17:56:00,2020-05-30T18:02:00,8037.85, Motor, Quick Assessment,Mitchell Mckay,Claims Officer
+1031,2020-06-01T03:20:00,2020-06-01T03:37:00,8037.85, Motor, Finalize Assessment,Alyvia Berger,Claims Officer
+1031,2020-06-02T03:36:00,2020-06-02T03:36:00,8037.85, Motor, Approve Assessment,Jaylen Gardner,Operations Manager
+1031,2020-06-02T08:01:00,2020-06-02T17:17:00,8037.85, Motor, Prepare Claim Settlement,Alyvia Berger,Operations Manager
+1031,2020-06-08T13:25:00,2020-06-08T13:26:00,8037.85, Motor, Approve Claim Settlement,Mitchell Mckay,Product Manager
+1031,2020-06-12T19:06:00,2020-06-12T19:06:00,8037.85, Motor, Execute Claim Settlement,Arturo Horton,Claims Administrator
+1146,2020-06-16T07:19:00,2020-06-16T07:56:00,6443.99, Motor, Register Claim,Jaylen Gardner,Claims Administrator
+1146,2020-06-16T13:23:00,2020-06-16T13:33:00,6443.99, Motor, Quick Assessment,Emilee Dorsey,Claims Officer
+1146,2020-06-21T16:36:00,2020-06-21T16:57:00,6443.99, Motor, Finalize Assessment,Karter Chapman,Claims Officer
+1146,2020-06-22T07:27:00,2020-06-22T07:27:00,6443.99, Motor, Approve Assessment,Nathanial Oliver,Operations Manager
+1146,2020-06-22T13:19:00,2020-06-22T19:24:00,6443.99, Motor, Prepare Claim Settlement,Alyvia Berger,Operations Manager
+1146,2020-06-28T05:37:00,2020-06-28T05:38:00,6443.99, Motor, Approve Claim Settlement,Bailee Barr,Product Manager
+1146,2020-06-28T16:50:00,2020-06-28T16:50:00,6443.99, Motor, Execute Claim Settlement,Kamila Leblanc,Claims Administrator
+115,2020-01-14T17:40:00,2020-01-14T18:16:00,5835.95, Business, Register Claim,Aria Bonilla,Claims Administrator
+115,2020-01-14T22:17:00,2020-01-14T22:28:00,5835.95, Business, Quick Assessment,Jaylen Gardner,Claims Officer
+115,2020-01-17T00:33:00,2020-01-17T00:41:00,5835.95, Business, Finalize Assessment,Karter Chapman,Claims Officer
+115,2020-01-18T02:50:00,2020-01-18T02:50:00,5835.95, Business, Approve Assessment,Dallas Melendez,Operations Manager
+115,2020-01-18T06:31:00,2020-01-18T17:11:00,5835.95, Business, Prepare Claim Settlement,Alyvia Berger,Operations Manager
+115,2020-01-23T06:40:00,2020-01-23T06:41:00,5835.95, Business, Approve Claim Settlement,Jaylen Gardner,Product Manager
+115,2020-01-24T06:59:00,2020-01-24T06:59:00,5835.95, Business, Execute Claim Settlement,Giuliana Cantrell,Claims Administrator
+1177,2020-06-20T02:33:00,2020-06-20T03:29:00,5991.18, Property, Register Claim,Lexi Larsen,Claims Administrator
+1177,2020-06-20T06:16:00,2020-06-20T06:28:00,5991.18, Property, Quick Assessment,Bailee Barr,Claims Officer
+1177,2020-06-24T16:11:00,2020-06-24T16:45:00,5991.18, Property, Finalize Assessment,Alyvia Berger,Claims Officer
+1177,2020-06-25T08:41:00,2020-06-25T08:41:00,5991.18, Property, Approve Assessment,Matilda Escobar,Operations Manager
+1177,2020-06-25T13:59:00,2020-06-25T22:52:00,5991.18, Property, Prepare Claim Settlement,Alyvia Berger,Operations Manager
+1177,2020-06-29T18:25:00,2020-06-29T18:26:00,5991.18, Property, Approve Claim Settlement,Matilda Escobar,Product Manager
+1177,2020-07-03T11:35:00,2020-07-03T11:35:00,5991.18, Property, Execute Claim Settlement,Arturo Horton,Claims Administrator
+123,2020-01-16T16:19:00,2020-01-16T16:24:00,577.42, Motor, Register Claim,Matilda Escobar,Claims Administrator
+123,2020-01-16T23:08:00,2020-01-16T23:18:00,577.42, Motor, Quick Assessment,Emilee Dorsey,Claims Officer
+123,2020-01-17T00:08:00,2020-01-17T00:28:00,577.42, Motor, Finalize Assessment,Rayna Jackson,Claims Officer
+123,2020-01-19T06:10:00,2020-01-19T06:10:00,577.42, Motor, Approve Assessment,Aria Bonilla,Operations Manager
+123,2020-01-19T17:20:00,2020-01-19T23:39:00,577.42, Motor, Prepare Claim Settlement,Alyvia Berger,Operations Manager
+123,2020-01-25T06:32:00,2020-01-25T06:33:00,577.42, Motor, Approve Claim Settlement,Rachael Tanner,Product Manager
+123,2020-01-26T12:52:00,2020-01-26T12:52:00,577.42, Motor, Execute Claim Settlement,Arturo Horton,Claims Administrator
+132,2020-01-17T08:31:00,2020-01-17T09:23:00,186.05, Motor, Register Claim,Nathanial Oliver,Claims Administrator
+132,2020-01-17T10:02:00,2020-01-17T10:11:00,186.05, Motor, Quick Assessment,Roland Salazar,Claims Officer
+132,2020-01-19T19:32:00,2020-01-19T19:52:00,186.05, Motor, Finalize Assessment,Rayna Jackson,Claims Officer
+132,2020-01-21T00:41:00,2020-01-21T00:41:00,186.05, Motor, Approve Assessment,Aria Bonilla,Operations Manager
+132,2020-01-22T09:19:00,2020-01-22T21:21:00,186.05, Motor, Prepare Claim Settlement,Alyvia Berger,Operations Manager
+132,2020-01-26T13:06:00,2020-01-26T13:07:00,186.05, Motor, Approve Claim Settlement,Lexi Larsen,Product Manager
+132,2020-01-27T07:45:00,2020-01-27T07:45:00,186.05, Motor, Execute Claim Settlement,Arturo Horton,Claims Administrator
+135,2020-01-17T23:44:00,2020-01-18T00:28:00,5083.33, Motor, Register Claim,Roland Salazar,Claims Administrator
+135,2020-01-18T00:38:00,2020-01-18T00:48:00,5083.33, Motor, Quick Assessment,Bailee Barr,Claims Officer
+135,2020-01-19T22:00:00,2020-01-19T22:13:00,5083.33, Motor, Finalize Assessment,Rayna Jackson,Claims Officer
+135,2020-01-21T08:21:00,2020-01-21T08:21:00,5083.33, Motor, Approve Assessment,Aria Bonilla,Operations Manager
+135,2020-01-21T18:58:00,2020-01-22T01:32:00,5083.33, Motor, Prepare Claim Settlement,Alyvia Berger,Operations Manager
+135,2020-01-24T04:27:00,2020-01-24T04:28:00,5083.33, Motor, Approve Claim Settlement,Jaylen Gardner,Product Manager
+135,2020-01-25T10:33:00,2020-01-25T10:33:00,5083.33, Motor, Execute Claim Settlement,Arturo Horton,Claims Administrator
+138,2020-01-18T05:14:00,2020-01-18T06:04:00,1908.88, Health, Register Claim,Nathanial Oliver,Claims Administrator
+138,2020-01-18T13:38:00,2020-01-18T13:47:00,1908.88, Health, Quick Assessment,Aria Bonilla,Claims Officer
+138,2020-01-19T22:13:00,2020-01-19T22:34:00,1908.88, Health, Finalize Assessment,Rayna Jackson,Claims Officer
+138,2020-01-21T17:23:00,2020-01-21T17:23:00,1908.88, Health, Approve Assessment,Aria Bonilla,Operations Manager
+138,2020-01-21T19:14:00,2020-01-22T03:46:00,1908.88, Health, Prepare Claim Settlement,Rayna Jackson,Operations Manager
+138,2020-01-24T17:39:00,2020-01-24T17:40:00,1908.88, Health, Approve Claim Settlement,Lexi Larsen,Product Manager
+138,2020-01-27T08:17:00,2020-01-27T08:17:00,1908.88, Health, Execute Claim Settlement,Arturo Horton,Claims Administrator
+140,2020-01-18T11:22:00,2020-01-18T11:36:00,12421.16, Property, Register Claim,Jaslene Bean,Claims Administrator
+140,2020-01-18T17:54:00,2020-01-18T18:00:00,12421.16, Property, Quick Assessment,Matilda Escobar,Claims Officer
+140,2020-01-21T23:26:00,2020-01-21T23:52:00,12421.16, Property, Finalize Assessment,Karter Chapman,Claims Officer
+140,2020-01-23T08:42:00,2020-01-23T08:42:00,12421.16, Property, Approve Assessment,Morgan Roach,Operations Manager
+140,2020-01-23T12:05:00,2020-01-23T18:58:00,12421.16, Property, Prepare Claim Settlement,Alyvia Berger,Operations Manager
+140,2020-01-27T14:47:00,2020-01-27T14:48:00,12421.16, Property, Approve Claim Settlement,Lexi Larsen,Product Manager
+140,2020-01-28T06:01:00,2020-01-28T06:01:00,12421.16, Property, Execute Claim Settlement,Kamila Leblanc,Claims Administrator
+1476,2020-07-31T06:04:00,2020-07-31T06:51:00,4839.94, Health, Register Claim,Roland Salazar,Claims Administrator
+1476,2020-07-31T10:40:00,2020-07-31T10:52:00,4839.94, Health, Quick Assessment,Hugh Collins,Claims Officer
+1476,2020-08-02T03:15:00,2020-08-02T03:45:00,4839.94, Health, Finalize Assessment,Alyvia Berger,Claims Officer
+1476,2020-08-03T01:36:00,2020-08-03T01:36:00,4839.94, Health, Approve Assessment,Jaylen Gardner,Operations Manager
+1476,2020-08-03T05:48:00,2020-08-03T11:47:00,4839.94, Health, Prepare Claim Settlement,Alyvia Berger,Operations Manager
+1476,2020-08-08T17:33:00,2020-08-08T17:34:00,4839.94, Health, Approve Claim Settlement,Lexi Larsen,Product Manager
+1476,2020-08-12T09:12:00,2020-08-12T09:12:00,4839.94, Health, Execute Claim Settlement,Giuliana Cantrell,Claims Administrator
+15,2020-01-02T18:07:00,2020-01-02T18:24:00,4707.01, Motor, Register Claim,Matilda Escobar,Claims Administrator
+15,2020-01-03T00:35:00,2020-01-03T00:48:00,4707.01, Motor, Quick Assessment,Jaylen Gardner,Claims Officer
+15,2020-01-03T14:02:00,2020-01-03T14:14:00,4707.01, Motor, Finalize Assessment,Alyvia Berger,Claims Officer
+15,2020-01-04T05:32:00,2020-01-04T05:32:00,4707.01, Motor, Approve Assessment,Rachael Tanner,Operations Manager
+15,2020-01-04T08:18:00,2020-01-04T16:44:00,4707.01, Motor, Prepare Claim Settlement,Alyvia Berger,Operations Manager
+15,2020-01-07T15:32:00,2020-01-07T15:33:00,4707.01, Motor, Approve Claim Settlement,Emilee Dorsey,Product Manager
+15,2020-01-10T00:11:00,2020-01-10T00:11:00,4707.01, Motor, Execute Claim Settlement,Mariam Tate,Claims Administrator
+1547,2020-08-11T08:08:00,2020-08-11T08:39:00,5509.84, Motor, Register Claim,Roland Salazar,Claims Administrator
+1547,2020-08-11T10:25:00,2020-08-11T10:35:00,5509.84, Motor, Quick Assessment,Roland Salazar,Claims Officer
+1547,2020-08-14T11:43:00,2020-08-14T12:10:00,5509.84, Motor, Finalize Assessment,Alyvia Berger,Claims Officer
+1547,2020-08-15T03:32:00,2020-08-15T03:32:00,5509.84, Motor, Approve Assessment,Jaslene Bean,Operations Manager
+1547,2020-08-15T21:26:00,2020-08-16T11:18:00,5509.84, Motor, Prepare Claim Settlement,Karter Chapman,Operations Manager
+1547,2020-08-21T23:31:00,2020-08-21T23:32:00,5509.84, Motor, Approve Claim Settlement,Nathanial Oliver,Product Manager
+1547,2020-08-23T14:05:00,2020-08-23T14:05:00,5509.84, Motor, Execute Claim Settlement,Arturo Horton,Claims Administrator
+1682,2020-08-30T11:34:00,2020-08-30T11:41:00,18383.55, Motor, Register Claim,Mitchell Mckay,Claims Administrator
+1682,2020-08-30T16:34:00,2020-08-30T16:43:00,18383.55, Motor, Quick Assessment,Hugh Collins,Claims Officer
+1682,2020-09-04T00:40:00,2020-09-04T01:00:00,18383.55, Motor, Finalize Assessment,Karter Chapman,Claims Officer
+1682,2020-09-05T15:40:00,2020-09-05T15:40:00,18383.55, Motor, Approve Assessment,Roland Salazar,Operations Manager
+1682,2020-09-06T00:10:00,2020-09-06T08:41:00,18383.55, Motor, Prepare Claim Settlement,Alyvia Berger,Operations Manager
+1682,2020-09-10T17:54:00,2020-09-10T17:55:00,18383.55, Motor, Approve Claim Settlement,Lexi Larsen,Product Manager
+1682,2020-09-11T19:08:00,2020-09-11T19:08:00,18383.55, Motor, Execute Claim Settlement,Mariam Tate,Claims Administrator
+179,2020-01-24T16:54:00,2020-01-24T17:35:00,468.5, Motor, Register Claim,Bailee Barr,Claims Administrator
+179,2020-01-24T18:46:00,2020-01-24T18:54:00,468.5, Motor, Quick Assessment,Jaylen Gardner,Claims Officer
+179,2020-01-26T03:29:00,2020-01-26T03:56:00,468.5, Motor, Finalize Assessment,Rayna Jackson,Claims Officer
+179,2020-01-27T19:16:00,2020-01-27T19:16:00,468.5, Motor, Approve Assessment,Rachael Tanner,Operations Manager
+179,2020-01-29T02:37:00,2020-01-29T12:32:00,468.5, Motor, Prepare Claim Settlement,Alyvia Berger,Operations Manager
+179,2020-02-02T14:05:00,2020-02-02T14:06:00,468.5, Motor, Approve Claim Settlement,Jaslene Bean,Product Manager
+179,2020-02-03T12:01:00,2020-02-03T12:01:00,468.5, Motor, Execute Claim Settlement,Katelyn Pitts,Claims Administrator
+189,2020-01-25T07:28:00,2020-01-25T07:38:00,23858.56, Property, Register Claim,Aria Bonilla,Claims Administrator
+189,2020-01-25T15:05:00,2020-01-25T15:15:00,23858.56, Property, Quick Assessment,Mitchell Mckay,Claims Officer
+189,2020-01-25T16:51:00,2020-01-25T16:57:00,23858.56, Property, Finalize Assessment,Karter Chapman,Claims Officer
+189,2020-01-26T05:42:00,2020-01-26T05:42:00,23858.56, Property, Approve Assessment,Bailee Barr,Operations Manager
+189,2020-01-26T18:21:00,2020-01-27T00:46:00,23858.56, Property, Prepare Claim Settlement,Alyvia Berger,Operations Manager
+189,2020-01-30T04:34:00,2020-01-30T04:35:00,23858.56, Property, Approve Claim Settlement,Rachael Tanner,Product Manager
+189,2020-01-31T17:29:00,2020-01-31T17:29:00,23858.56, Property, Execute Claim Settlement,Katelyn Pitts,Claims Administrator
+199,2020-01-26T05:48:00,2020-01-26T06:37:00,1629.09, Property, Register Claim,Dallas Melendez,Claims Administrator
+199,2020-01-26T10:00:00,2020-01-26T10:10:00,1629.09, Property, Quick Assessment,Mitchell Mckay,Claims Officer
+199,2020-01-27T06:07:00,2020-01-27T06:18:00,1629.09, Property, Finalize Assessment,Rayna Jackson,Claims Officer
+199,2020-01-28T22:21:00,2020-01-28T22:21:00,1629.09, Property, Approve Assessment,Lexi Larsen,Operations Manager
+199,2020-01-29T02:13:00,2020-01-29T15:58:00,1629.09, Property, Prepare Claim Settlement,Rayna Jackson,Operations Manager
+199,2020-02-04T15:10:00,2020-02-04T15:11:00,1629.09, Property, Approve Claim Settlement,Morgan Roach,Product Manager
+199,2020-02-05T12:11:00,2020-02-05T12:11:00,1629.09, Property, Execute Claim Settlement,Katelyn Pitts,Claims Administrator
+227,2020-01-30T02:47:00,2020-01-30T03:04:00,5308.53, Property, Register Claim,Roland Salazar,Claims Administrator
+227,2020-01-30T08:31:00,2020-01-30T08:41:00,5308.53, Property, Quick Assessment,Jaylen Gardner,Claims Officer
+227,2020-01-31T05:01:00,2020-01-31T05:34:00,5308.53, Property, Finalize Assessment,Rayna Jackson,Claims Officer
+227,2020-02-01T01:09:00,2020-02-01T01:09:00,5308.53, Property, Approve Assessment,Jaslene Bean,Operations Manager
+227,2020-02-01T15:06:00,2020-02-01T19:32:00,5308.53, Property, Prepare Claim Settlement,Rayna Jackson,Operations Manager
+227,2020-02-05T20:17:00,2020-02-05T20:18:00,5308.53, Property, Approve Claim Settlement,Jaylen Gardner,Product Manager
+227,2020-02-08T01:11:00,2020-02-08T01:11:00,5308.53, Property, Execute Claim Settlement,Kamila Leblanc,Claims Administrator
+233,2020-01-31T09:09:00,2020-01-31T09:51:00,25572.91, Motor, Register Claim,Emilee Dorsey,Claims Administrator
+233,2020-01-31T12:36:00,2020-01-31T12:43:00,25572.91, Motor, Quick Assessment,Roland Salazar,Claims Officer
+233,2020-02-05T10:00:00,2020-02-05T10:41:00,25572.91, Motor, Finalize Assessment,Rayna Jackson,Claims Officer
+233,2020-02-06T00:49:00,2020-02-06T00:49:00,25572.91, Motor, Approve Assessment,Dallas Melendez,Operations Manager
+233,2020-02-06T10:25:00,2020-02-06T21:34:00,25572.91, Motor, Prepare Claim Settlement,Alyvia Berger,Operations Manager
+233,2020-02-10T12:05:00,2020-02-10T12:06:00,25572.91, Motor, Approve Claim Settlement,Bailee Barr,Finance Manager
+233,2020-02-13T08:44:00,2020-02-13T08:44:00,25572.91, Motor, Execute Claim Settlement,Kamila Leblanc,Claims Administrator
+254,2020-02-04T20:04:00,2020-02-04T20:27:00,956.15, Health, Register Claim,Emilee Dorsey,Claims Administrator
+254,2020-02-05T03:26:00,2020-02-05T03:36:00,956.15, Health, Quick Assessment,Mitchell Mckay,Claims Officer
+254,2020-02-05T11:48:00,2020-02-05T12:11:00,956.15, Health, Finalize Assessment,Rayna Jackson,Claims Officer
+254,2020-02-07T22:58:00,2020-02-07T22:58:00,956.15, Health, Approve Assessment,Aria Bonilla,Operations Manager
+254,2020-02-08T03:52:00,2020-02-08T17:37:00,956.15, Health, Prepare Claim Settlement,Alyvia Berger,Operations Manager
+254,2020-02-14T16:58:00,2020-02-14T16:59:00,956.15, Health, Approve Claim Settlement,Rachael Tanner,Product Manager
+254,2020-02-16T00:14:00,2020-02-16T00:14:00,956.15, Health, Execute Claim Settlement,Katelyn Pitts,Claims Administrator
+266,2020-02-06T08:32:00,2020-02-06T09:01:00,3728.3, Motor, Register Claim,Lexi Larsen,Claims Administrator
+266,2020-02-06T17:09:00,2020-02-06T17:17:00,3728.3, Motor, Quick Assessment,Mitchell Mckay,Claims Officer
+266,2020-02-07T07:32:00,2020-02-07T08:08:00,3728.3, Motor, Finalize Assessment,Karter Chapman,Claims Officer
+266,2020-02-08T17:19:00,2020-02-08T17:19:00,3728.3, Motor, Approve Assessment,Mitchell Mckay,Operations Manager
+266,2020-02-08T21:50:00,2020-02-09T01:48:00,3728.3, Motor, Prepare Claim Settlement,Rayna Jackson,Operations Manager
+266,2020-02-12T05:26:00,2020-02-12T05:27:00,3728.3, Motor, Approve Claim Settlement,Aria Bonilla,Product Manager
+266,2020-02-12T18:11:00,2020-02-12T18:11:00,3728.3, Motor, Execute Claim Settlement,Giuliana Cantrell,Claims Administrator
+270,2020-02-06T20:48:00,2020-02-06T20:57:00,7820.72, Health, Register Claim,Morgan Roach,Claims Administrator
+270,2020-02-07T00:01:00,2020-02-07T00:12:00,7820.72, Health, Quick Assessment,Hugh Collins,Claims Officer
+270,2020-02-10T02:48:00,2020-02-10T03:04:00,7820.72, Health, Finalize Assessment,Karter Chapman,Claims Officer
+270,2020-02-11T11:54:00,2020-02-11T11:54:00,7820.72, Health, Approve Assessment,Lexi Larsen,Operations Manager
+270,2020-02-12T01:06:00,2020-02-12T05:20:00,7820.72, Health, Prepare Claim Settlement,Karter Chapman,Operations Manager
+270,2020-02-19T00:56:00,2020-02-19T00:57:00,7820.72, Health, Approve Claim Settlement,Jaylen Gardner,Product Manager
+270,2020-02-20T18:18:00,2020-02-20T18:18:00,7820.72, Health, Execute Claim Settlement,Kamila Leblanc,Claims Administrator
+272,2020-02-07T02:48:00,2020-02-07T03:26:00,14411.24, Motor, Register Claim,Nathanial Oliver,Claims Administrator
+272,2020-02-07T04:30:00,2020-02-07T04:41:00,14411.24, Motor, Quick Assessment,Roland Salazar,Claims Officer
+272,2020-02-09T10:45:00,2020-02-09T11:08:00,14411.24, Motor, Finalize Assessment,Karter Chapman,Claims Officer
+272,2020-02-10T16:09:00,2020-02-10T16:09:00,14411.24, Motor, Approve Assessment,Jaslene Bean,Operations Manager
+272,2020-02-11T08:23:00,2020-02-11T17:17:00,14411.24, Motor, Prepare Claim Settlement,Rayna Jackson,Operations Manager
+272,2020-02-17T07:49:00,2020-02-17T07:50:00,14411.24, Motor, Approve Claim Settlement,Mitchell Mckay,Product Manager
+272,2020-02-18T04:02:00,2020-02-18T04:02:00,14411.24, Motor, Execute Claim Settlement,Giuliana Cantrell,Claims Administrator
+279,2020-02-07T16:01:00,2020-02-07T16:56:00,9248.81, Health, Register Claim,Roland Salazar,Claims Administrator
+279,2020-02-08T00:21:00,2020-02-08T00:28:00,9248.81, Health, Quick Assessment,Roland Salazar,Claims Officer
+279,2020-02-09T16:22:00,2020-02-09T16:54:00,9248.81, Health, Finalize Assessment,Karter Chapman,Claims Officer
+279,2020-02-10T21:24:00,2020-02-10T21:24:00,9248.81, Health, Approve Assessment,Rachael Tanner,Operations Manager
+279,2020-02-11T01:12:00,2020-02-11T11:43:00,9248.81, Health, Prepare Claim Settlement,Alyvia Berger,Operations Manager
+279,2020-02-14T00:07:00,2020-02-14T00:08:00,9248.81, Health, Approve Claim Settlement,Dallas Melendez,Product Manager
+279,2020-02-15T09:36:00,2020-02-15T09:36:00,9248.81, Health, Execute Claim Settlement,Mariam Tate,Claims Administrator
+280,2020-02-07T20:49:00,2020-02-07T20:58:00,923.69, Motor, Register Claim,Jaslene Bean,Claims Administrator
+280,2020-02-08T02:25:00,2020-02-08T02:36:00,923.69, Motor, Quick Assessment,Rachael Tanner,Claims Officer
+280,2020-02-09T22:16:00,2020-02-09T22:43:00,923.69, Motor, Finalize Assessment,Alyvia Berger,Claims Officer
+280,2020-02-11T08:07:00,2020-02-11T08:07:00,923.69, Motor, Approve Assessment,Nathanial Oliver,Operations Manager
+280,2020-02-11T13:15:00,2020-02-11T21:50:00,923.69, Motor, Prepare Claim Settlement,Alyvia Berger,Operations Manager
+280,2020-02-17T02:54:00,2020-02-17T02:55:00,923.69, Motor, Approve Claim Settlement,Roland Salazar,Product Manager
+280,2020-02-17T13:49:00,2020-02-17T13:49:00,923.69, Motor, Execute Claim Settlement,Katelyn Pitts,Claims Administrator
+290,2020-02-09T07:31:00,2020-02-09T08:14:00,76.18, Health, Register Claim,Matilda Escobar,Claims Administrator
+290,2020-02-09T15:59:00,2020-02-09T16:08:00,76.18, Health, Quick Assessment,Bailee Barr,Claims Officer
+290,2020-02-09T19:17:00,2020-02-09T19:58:00,76.18, Health, Finalize Assessment,Alyvia Berger,Claims Officer
+290,2020-02-13T11:23:00,2020-02-13T11:23:00,76.18, Health, Approve Assessment,Aria Bonilla,Operations Manager
+290,2020-02-14T06:25:00,2020-02-14T20:11:00,76.18, Health, Prepare Claim Settlement,Rayna Jackson,Operations Manager
+290,2020-02-19T00:33:00,2020-02-19T00:34:00,76.18, Health, Approve Claim Settlement,Nathanial Oliver,Product Manager
+290,2020-02-22T09:59:00,2020-02-22T09:59:00,76.18, Health, Execute Claim Settlement,Mariam Tate,Claims Administrator
+303,2020-02-11T11:02:00,2020-02-11T11:56:00,7227.39, Health, Register Claim,Mitchell Mckay,Claims Administrator
+303,2020-02-11T14:20:00,2020-02-11T14:30:00,7227.39, Health, Quick Assessment,Dallas Melendez,Claims Officer
+303,2020-02-14T18:59:00,2020-02-14T18:59:00,7227.39, Health, Finalize Assessment,Alyvia Berger,Claims Officer
+303,2020-02-16T12:24:00,2020-02-16T12:24:00,7227.39, Health, Approve Assessment,Emilee Dorsey,Operations Manager
+303,2020-02-17T01:37:00,2020-02-17T13:28:00,7227.39, Health, Prepare Claim Settlement,Alyvia Berger,Operations Manager
+303,2020-02-21T15:44:00,2020-02-21T15:45:00,7227.39, Health, Approve Claim Settlement,Roland Salazar,Product Manager
+303,2020-02-23T03:02:00,2020-02-23T03:02:00,7227.39, Health, Execute Claim Settlement,Giuliana Cantrell,Claims Administrator
+308,2020-02-12T21:56:00,2020-02-12T22:28:00,4515.89, Motor, Register Claim,Lexi Larsen,Claims Administrator
+308,2020-02-12T22:40:00,2020-02-12T22:51:00,4515.89, Motor, Quick Assessment,Nathanial Oliver,Claims Officer
+308,2020-02-14T17:39:00,2020-02-14T18:06:00,4515.89, Motor, Finalize Assessment,Alyvia Berger,Claims Officer
+308,2020-02-15T11:56:00,2020-02-15T11:56:00,4515.89, Motor, Approve Assessment,Dallas Melendez,Operations Manager
+308,2020-02-15T20:18:00,2020-02-16T00:36:00,4515.89, Motor, Prepare Claim Settlement,Rayna Jackson,Operations Manager
+308,2020-02-19T17:46:00,2020-02-19T17:47:00,4515.89, Motor, Approve Claim Settlement,Hugh Collins,Product Manager
+308,2020-02-22T09:25:00,2020-02-22T09:25:00,4515.89, Motor, Execute Claim Settlement,Mariam Tate,Claims Administrator
+325,2020-02-14T18:12:00,2020-02-14T18:26:00,24741.15, Business, Register Claim,Bailee Barr,Claims Administrator
+325,2020-02-15T02:16:00,2020-02-15T02:27:00,24741.15, Business, Quick Assessment,Nathanial Oliver,Claims Officer
+325,2020-02-15T14:40:00,2020-02-15T14:54:00,24741.15, Business, Finalize Assessment,Karter Chapman,Claims Officer
+325,2020-02-17T23:26:00,2020-02-17T23:26:00,24741.15, Business, Approve Assessment,Nathanial Oliver,Operations Manager
+325,2020-02-18T17:40:00,2020-02-19T00:05:00,24741.15, Business, Prepare Claim Settlement,Rayna Jackson,Operations Manager
+325,2020-02-24T07:00:00,2020-02-24T07:01:00,24741.15, Business, Approve Claim Settlement,Lexi Larsen,Product Manager
+325,2020-02-25T18:25:00,2020-02-25T18:25:00,24741.15, Business, Execute Claim Settlement,Katelyn Pitts,Claims Administrator
+327,2020-02-15T00:48:00,2020-02-15T01:33:00,2924.08, Business, Register Claim,Mitchell Mckay,Claims Administrator
+327,2020-02-15T07:33:00,2020-02-15T07:37:00,2924.08, Business, Quick Assessment,Lexi Larsen,Claims Officer
+327,2020-02-20T12:31:00,2020-02-20T12:51:00,2924.08, Business, Finalize Assessment,Karter Chapman,Claims Officer
+327,2020-02-21T06:45:00,2020-02-21T06:45:00,2924.08, Business, Approve Assessment,Rachael Tanner,Operations Manager
+327,2020-02-21T08:59:00,2020-02-21T16:34:00,2924.08, Business, Prepare Claim Settlement,Rayna Jackson,Operations Manager
+327,2020-02-26T03:27:00,2020-02-26T03:28:00,2924.08, Business, Approve Claim Settlement,Matilda Escobar,Product Manager
+327,2020-02-26T19:40:00,2020-02-26T19:40:00,2924.08, Business, Execute Claim Settlement,Mariam Tate,Claims Administrator
+363,2020-02-21T00:56:00,2020-02-21T01:16:00,8709.25, Motor, Register Claim,Emilee Dorsey,Claims Administrator
+363,2020-02-21T05:48:00,2020-02-21T06:01:00,8709.25, Motor, Quick Assessment,Rachael Tanner,Claims Officer
+363,2020-02-24T12:16:00,2020-02-24T12:47:00,8709.25, Motor, Finalize Assessment,Rayna Jackson,Claims Officer
+363,2020-02-25T09:50:00,2020-02-25T09:50:00,8709.25, Motor, Approve Assessment,Aria Bonilla,Operations Manager
+363,2020-02-25T13:30:00,2020-02-26T01:56:00,8709.25, Motor, Prepare Claim Settlement,Alyvia Berger,Operations Manager
+363,2020-03-02T23:03:00,2020-03-02T23:04:00,8709.25, Motor, Approve Claim Settlement,Dallas Melendez,Product Manager
+363,2020-03-04T11:52:00,2020-03-04T11:52:00,8709.25, Motor, Execute Claim Settlement,Giuliana Cantrell,Claims Administrator
+380,2020-02-23T19:02:00,2020-02-23T19:11:00,16586.97, Motor, Register Claim,Aria Bonilla,Claims Administrator
+380,2020-02-24T00:25:00,2020-02-24T00:35:00,16586.97, Motor, Quick Assessment,Rachael Tanner,Claims Officer
+380,2020-02-25T12:20:00,2020-02-25T12:36:00,16586.97, Motor, Finalize Assessment,Alyvia Berger,Claims Officer
+380,2020-02-27T02:21:00,2020-02-27T02:21:00,16586.97, Motor, Approve Assessment,Mitchell Mckay,Operations Manager
+380,2020-02-28T01:49:00,2020-02-28T06:21:00,16586.97, Motor, Prepare Claim Settlement,Rayna Jackson,Operations Manager
+380,2020-03-05T00:11:00,2020-03-05T00:12:00,16586.97, Motor, Approve Claim Settlement,Matilda Escobar,Product Manager
+380,2020-03-05T22:19:00,2020-03-05T22:19:00,16586.97, Motor, Execute Claim Settlement,Katelyn Pitts,Claims Administrator
+411,2020-02-28T07:52:00,2020-02-28T08:30:00,10954.39, Property, Register Claim,Aria Bonilla,Claims Administrator
+411,2020-02-28T16:37:00,2020-02-28T16:41:00,10954.39, Property, Quick Assessment,Roland Salazar,Claims Officer
+411,2020-03-03T22:05:00,2020-03-03T22:11:00,10954.39, Property, Finalize Assessment,Alyvia Berger,Claims Officer
+411,2020-03-04T23:07:00,2020-03-04T23:07:00,10954.39, Property, Approve Assessment,Mitchell Mckay,Operations Manager
+411,2020-03-05T01:52:00,2020-03-05T09:01:00,10954.39, Property, Prepare Claim Settlement,Karter Chapman,Operations Manager
+411,2020-03-10T16:25:00,2020-03-10T16:26:00,10954.39, Property, Approve Claim Settlement,Morgan Roach,Product Manager
+411,2020-03-12T16:44:00,2020-03-12T16:44:00,10954.39, Property, Execute Claim Settlement,Mariam Tate,Claims Administrator
+42,2020-01-05T15:15:00,2020-01-05T15:21:00,24646.28, Motor, Register Claim,Jaylen Gardner,Claims Administrator
+42,2020-01-05T20:42:00,2020-01-05T20:56:00,24646.28, Motor, Quick Assessment,Jaslene Bean,Claims Officer
+42,2020-01-06T16:15:00,2020-01-06T16:33:00,24646.28, Motor, Finalize Assessment,Karter Chapman,Claims Officer
+42,2020-01-07T03:17:00,2020-01-07T03:17:00,24646.28, Motor, Approve Assessment,Matilda Escobar,Operations Manager
+42,2020-01-07T05:26:00,2020-01-07T11:17:00,24646.28, Motor, Prepare Claim Settlement,Rayna Jackson,Operations Manager
+42,2020-01-09T23:18:00,2020-01-09T23:19:00,24646.28, Motor, Approve Claim Settlement,Hugh Collins,Product Manager
+42,2020-01-11T01:04:00,2020-01-11T01:04:00,24646.28, Motor, Execute Claim Settlement,Arturo Horton,Claims Administrator
+462,2020-03-08T09:49:00,2020-03-08T10:17:00,16533.2, Motor, Register Claim,Jaslene Bean,Claims Administrator
+462,2020-03-08T14:48:00,2020-03-08T14:57:00,16533.2, Motor, Quick Assessment,Jaylen Gardner,Claims Officer
+462,2020-03-09T01:03:00,2020-03-09T01:26:00,16533.2, Motor, Finalize Assessment,Rayna Jackson,Claims Officer
+462,2020-03-09T16:02:00,2020-03-09T16:02:00,16533.2, Motor, Approve Assessment,Hugh Collins,Operations Manager
+462,2020-03-09T19:17:00,2020-03-10T02:44:00,16533.2, Motor, Prepare Claim Settlement,Karter Chapman,Operations Manager
+462,2020-03-14T21:47:00,2020-03-14T21:48:00,16533.2, Motor, Approve Claim Settlement,Dallas Melendez,Product Manager
+462,2020-03-15T16:23:00,2020-03-15T16:23:00,16533.2, Motor, Execute Claim Settlement,Arturo Horton,Claims Administrator
+487,2020-03-11T05:38:00,2020-03-11T06:10:00,286.49, Motor, Register Claim,Roland Salazar,Claims Administrator
+487,2020-03-11T11:40:00,2020-03-11T11:49:00,286.49, Motor, Quick Assessment,Matilda Escobar,Claims Officer
+487,2020-03-12T05:41:00,2020-03-12T06:03:00,286.49, Motor, Finalize Assessment,Karter Chapman,Claims Officer
+487,2020-03-13T08:04:00,2020-03-13T08:04:00,286.49, Motor, Approve Assessment,Morgan Roach,Operations Manager
+487,2020-03-13T11:06:00,2020-03-13T20:25:00,286.49, Motor, Prepare Claim Settlement,Alyvia Berger,Operations Manager
+487,2020-03-16T19:11:00,2020-03-16T19:12:00,286.49, Motor, Approve Claim Settlement,Jaylen Gardner,Product Manager
+487,2020-03-20T02:39:00,2020-03-20T02:39:00,286.49, Motor, Execute Claim Settlement,Kamila Leblanc,Claims Administrator
+49,2020-01-06T09:53:00,2020-01-06T10:12:00,22158.33, Property, Register Claim,Morgan Roach,Claims Administrator
+49,2020-01-06T18:27:00,2020-01-06T18:40:00,22158.33, Property, Quick Assessment,Rachael Tanner,Claims Officer
+49,2020-01-06T20:49:00,2020-01-06T20:59:00,22158.33, Property, Finalize Assessment,Karter Chapman,Claims Officer
+49,2020-01-08T21:38:00,2020-01-08T21:38:00,22158.33, Property, Approve Assessment,Dallas Melendez,Operations Manager
+49,2020-01-09T02:35:00,2020-01-09T06:38:00,22158.33, Property, Prepare Claim Settlement,Alyvia Berger,Operations Manager
+49,2020-01-11T07:18:00,2020-01-11T07:19:00,22158.33, Property, Approve Claim Settlement,Nathanial Oliver,Product Manager
+49,2020-01-11T20:23:00,2020-01-11T20:23:00,22158.33, Property, Execute Claim Settlement,Mariam Tate,Claims Administrator
+52,2020-01-07T06:51:00,2020-01-07T07:11:00,5437.35, Property, Register Claim,Aria Bonilla,Claims Administrator
+52,2020-01-07T09:21:00,2020-01-07T09:30:00,5437.35, Property, Quick Assessment,Rachael Tanner,Claims Officer
+52,2020-01-07T13:28:00,2020-01-07T13:47:00,5437.35, Property, Finalize Assessment,Karter Chapman,Claims Officer
+52,2020-01-10T11:36:00,2020-01-10T11:36:00,5437.35, Property, Approve Assessment,Lexi Larsen,Operations Manager
+52,2020-01-11T07:14:00,2020-01-11T21:14:00,5437.35, Property, Prepare Claim Settlement,Alyvia Berger,Operations Manager
+52,2020-01-15T07:43:00,2020-01-15T07:44:00,5437.35, Property, Approve Claim Settlement,Roland Salazar,Product Manager
+52,2020-01-17T04:07:00,2020-01-17T04:07:00,5437.35, Property, Execute Claim Settlement,Katelyn Pitts,Claims Administrator
+53,2020-01-07T10:04:00,2020-01-07T10:46:00,3422.95, Property, Register Claim,Matilda Escobar,Claims Administrator
+53,2020-01-07T15:24:00,2020-01-07T15:33:00,3422.95, Property, Quick Assessment,Bailee Barr,Claims Officer
+53,2020-01-08T02:44:00,2020-01-08T03:05:00,3422.95, Property, Finalize Assessment,Rayna Jackson,Claims Officer
+53,2020-01-10T13:21:00,2020-01-10T13:21:00,3422.95, Property, Approve Assessment,Jaslene Bean,Operations Manager
+53,2020-01-11T05:46:00,2020-01-11T11:00:00,3422.95, Property, Prepare Claim Settlement,Karter Chapman,Operations Manager
+53,2020-01-16T03:06:00,2020-01-16T03:07:00,3422.95, Property, Approve Claim Settlement,Hugh Collins,Product Manager
+53,2020-01-17T06:09:00,2020-01-17T06:09:00,3422.95, Property, Execute Claim Settlement,Kamila Leblanc,Claims Administrator
+618,2020-03-29T16:16:00,2020-03-29T17:01:00,27027.62, Motor, Register Claim,Jaylen Gardner,Claims Administrator
+618,2020-03-30T01:15:00,2020-03-30T01:24:00,27027.62, Motor, Quick Assessment,Dallas Melendez,Claims Officer
+618,2020-04-01T02:20:00,2020-04-01T02:48:00,27027.62, Motor, Finalize Assessment,Rayna Jackson,Claims Officer
+618,2020-04-03T05:42:00,2020-04-03T05:42:00,27027.62, Motor, Approve Assessment,Morgan Roach,Operations Manager
+618,2020-04-03T08:04:00,2020-04-03T13:22:00,27027.62, Motor, Prepare Claim Settlement,Karter Chapman,Operations Manager
+618,2020-04-05T20:40:00,2020-04-05T20:41:00,27027.62, Motor, Approve Claim Settlement,Jaylen Gardner,Product Manager
+618,2020-04-10T10:32:00,2020-04-10T10:32:00,27027.62, Motor, Execute Claim Settlement,Arturo Horton,Claims Administrator
+619,2020-03-29T19:04:00,2020-03-29T19:26:00,11362.69, Motor, Register Claim,Emilee Dorsey,Claims Administrator
+619,2020-03-30T01:47:00,2020-03-30T01:58:00,11362.69, Motor, Quick Assessment,Matilda Escobar,Claims Officer
+619,2020-03-31T18:56:00,2020-03-31T19:06:00,11362.69, Motor, Finalize Assessment,Alyvia Berger,Claims Officer
+619,2020-04-03T18:19:00,2020-04-03T18:19:00,11362.69, Motor, Approve Assessment,Aria Bonilla,Operations Manager
+619,2020-04-04T01:50:00,2020-04-04T14:22:00,11362.69, Motor, Prepare Claim Settlement,Rayna Jackson,Operations Manager
+619,2020-04-09T19:20:00,2020-04-09T19:21:00,11362.69, Motor, Approve Claim Settlement,Morgan Roach,Product Manager
+619,2020-04-11T22:40:00,2020-04-11T22:40:00,11362.69, Motor, Execute Claim Settlement,Katelyn Pitts,Claims Administrator
+623,2020-03-30T23:55:00,2020-03-31T00:34:00,9471.03, Motor, Register Claim,Lexi Larsen,Claims Administrator
+623,2020-03-31T08:17:00,2020-03-31T08:28:00,9471.03, Motor, Quick Assessment,Lexi Larsen,Claims Officer
+623,2020-04-01T01:01:00,2020-04-01T01:40:00,9471.03, Motor, Finalize Assessment,Karter Chapman,Claims Officer
+623,2020-04-02T00:34:00,2020-04-02T00:34:00,9471.03, Motor, Approve Assessment,Lexi Larsen,Operations Manager
+623,2020-04-02T03:26:00,2020-04-02T15:24:00,9471.03, Motor, Prepare Claim Settlement,Rayna Jackson,Operations Manager
+623,2020-04-05T19:11:00,2020-04-05T19:12:00,9471.03, Motor, Approve Claim Settlement,Aria Bonilla,Product Manager
+623,2020-04-07T14:09:00,2020-04-07T14:09:00,9471.03, Motor, Execute Claim Settlement,Arturo Horton,Claims Administrator
+683,2020-04-09T11:16:00,2020-04-09T12:06:00,27285.73, Motor, Register Claim,Jaslene Bean,Claims Administrator
+683,2020-04-09T18:34:00,2020-04-09T18:46:00,27285.73, Motor, Quick Assessment,Dallas Melendez,Claims Officer
+683,2020-04-10T08:56:00,2020-04-10T09:11:00,27285.73, Motor, Finalize Assessment,Karter Chapman,Claims Officer
+683,2020-04-11T11:08:00,2020-04-11T11:08:00,27285.73, Motor, Approve Assessment,Lexi Larsen,Operations Manager
+683,2020-04-11T13:13:00,2020-04-12T03:48:00,27285.73, Motor, Prepare Claim Settlement,Rayna Jackson,Operations Manager
+683,2020-04-16T03:25:00,2020-04-16T03:26:00,27285.73, Motor, Approve Claim Settlement,Hugh Collins,Product Manager
+683,2020-04-18T07:49:00,2020-04-18T07:49:00,27285.73, Motor, Execute Claim Settlement,Giuliana Cantrell,Claims Administrator
+686,2020-04-09T16:25:00,2020-04-09T17:03:00,11828.79, Motor, Register Claim,Lexi Larsen,Claims Administrator
+686,2020-04-09T19:59:00,2020-04-09T20:05:00,11828.79, Motor, Quick Assessment,Bailee Barr,Claims Officer
+686,2020-04-10T01:01:00,2020-04-10T01:24:00,11828.79, Motor, Finalize Assessment,Rayna Jackson,Claims Officer
+686,2020-04-11T13:50:00,2020-04-11T13:50:00,11828.79, Motor, Approve Assessment,Emilee Dorsey,Operations Manager
+686,2020-04-11T17:06:00,2020-04-12T01:14:00,11828.79, Motor, Prepare Claim Settlement,Alyvia Berger,Operations Manager
+686,2020-04-19T16:40:00,2020-04-19T16:41:00,11828.79, Motor, Approve Claim Settlement,Jaslene Bean,Product Manager
+686,2020-04-20T19:32:00,2020-04-20T19:32:00,11828.79, Motor, Execute Claim Settlement,Arturo Horton,Claims Administrator
+725,2020-04-15T14:51:00,2020-04-15T15:19:00,25153.85, Property, Register Claim,Jaylen Gardner,Claims Administrator
+725,2020-04-15T18:47:00,2020-04-15T18:53:00,25153.85, Property, Quick Assessment,Rachael Tanner,Claims Officer
+725,2020-04-17T01:52:00,2020-04-17T02:19:00,25153.85, Property, Finalize Assessment,Karter Chapman,Claims Officer
+725,2020-04-18T08:32:00,2020-04-18T08:32:00,25153.85, Property, Approve Assessment,Rachael Tanner,Operations Manager
+725,2020-04-19T03:41:00,2020-04-19T07:44:00,25153.85, Property, Prepare Claim Settlement,Alyvia Berger,Operations Manager
+725,2020-04-24T15:03:00,2020-04-24T15:04:00,25153.85, Property, Approve Claim Settlement,Hugh Collins,Product Manager
+725,2020-04-26T21:49:00,2020-04-26T21:49:00,25153.85, Property, Execute Claim Settlement,Giuliana Cantrell,Claims Administrator
+75,2020-01-10T03:12:00,2020-01-10T03:30:00,6384.99, Motor, Register Claim,Matilda Escobar,Claims Administrator
+75,2020-01-10T04:57:00,2020-01-10T05:08:00,6384.99, Motor, Quick Assessment,Dallas Melendez,Claims Officer
+75,2020-01-11T23:41:00,2020-01-12T00:06:00,6384.99, Motor, Finalize Assessment,Rayna Jackson,Claims Officer
+75,2020-01-14T13:59:00,2020-01-14T13:59:00,6384.99, Motor, Approve Assessment,Lexi Larsen,Operations Manager
+75,2020-01-14T19:23:00,2020-01-15T06:38:00,6384.99, Motor, Prepare Claim Settlement,Rayna Jackson,Operations Manager
+75,2020-01-19T08:18:00,2020-01-19T08:19:00,6384.99, Motor, Approve Claim Settlement,Rachael Tanner,Product Manager
+75,2020-01-20T20:29:00,2020-01-20T20:29:00,6384.99, Motor, Execute Claim Settlement,Giuliana Cantrell,Claims Administrator
+791,2020-04-27T15:18:00,2020-04-27T15:47:00,1510.04, Motor, Register Claim,Bailee Barr,Claims Administrator
+791,2020-04-27T20:53:00,2020-04-27T21:00:00,1510.04, Motor, Quick Assessment,Nathanial Oliver,Claims Officer
+791,2020-04-29T05:01:00,2020-04-29T05:27:00,1510.04, Motor, Finalize Assessment,Alyvia Berger,Claims Officer
+791,2020-05-01T10:10:00,2020-05-01T10:10:00,1510.04, Motor, Approve Assessment,Aria Bonilla,Operations Manager
+791,2020-05-01T12:22:00,2020-05-01T18:26:00,1510.04, Motor, Prepare Claim Settlement,Alyvia Berger,Operations Manager
+791,2020-05-08T00:16:00,2020-05-08T00:17:00,1510.04, Motor, Approve Claim Settlement,Morgan Roach,Product Manager
+791,2020-05-10T20:50:00,2020-05-10T20:50:00,1510.04, Motor, Execute Claim Settlement,Arturo Horton,Claims Administrator
+812,2020-05-01T05:18:00,2020-05-01T06:06:00,331.5, Business, Register Claim,Lexi Larsen,Claims Administrator
+812,2020-05-01T09:06:00,2020-05-01T09:15:00,331.5, Business, Quick Assessment,Matilda Escobar,Claims Officer
+812,2020-05-02T20:20:00,2020-05-02T20:44:00,331.5, Business, Finalize Assessment,Alyvia Berger,Claims Officer
+812,2020-05-03T13:43:00,2020-05-03T13:43:00,331.5, Business, Approve Assessment,Roland Salazar,Operations Manager
+812,2020-05-03T17:57:00,2020-05-04T05:47:00,331.5, Business, Prepare Claim Settlement,Alyvia Berger,Operations Manager
+812,2020-05-10T02:41:00,2020-05-10T02:42:00,331.5, Business, Approve Claim Settlement,Emilee Dorsey,Product Manager
+812,2020-05-12T08:08:00,2020-05-12T08:08:00,331.5, Business, Execute Claim Settlement,Katelyn Pitts,Claims Administrator
+819,2020-05-01T20:52:00,2020-05-01T21:43:00,3859.24, Motor, Register Claim,Mitchell Mckay,Claims Administrator
+819,2020-05-01T22:03:00,2020-05-01T22:14:00,3859.24, Motor, Quick Assessment,Nathanial Oliver,Claims Officer
+819,2020-05-02T23:51:00,2020-05-03T00:24:00,3859.24, Motor, Finalize Assessment,Alyvia Berger,Claims Officer
+819,2020-05-05T16:16:00,2020-05-05T16:16:00,3859.24, Motor, Approve Assessment,Roland Salazar,Operations Manager
+819,2020-05-05T22:00:00,2020-05-06T11:03:00,3859.24, Motor, Prepare Claim Settlement,Rayna Jackson,Operations Manager
+819,2020-05-12T19:55:00,2020-05-12T19:56:00,3859.24, Motor, Approve Claim Settlement,Matilda Escobar,Product Manager
+819,2020-05-14T06:44:00,2020-05-14T06:44:00,3859.24, Motor, Execute Claim Settlement,Arturo Horton,Claims Administrator
+841,2020-05-04T19:33:00,2020-05-04T19:47:00,5060.43, Motor, Register Claim,Roland Salazar,Claims Administrator
+841,2020-05-04T23:23:00,2020-05-04T23:33:00,5060.43, Motor, Quick Assessment,Jaylen Gardner,Claims Officer
+841,2020-05-06T22:19:00,2020-05-06T22:53:00,5060.43, Motor, Finalize Assessment,Rayna Jackson,Claims Officer
+841,2020-05-07T21:07:00,2020-05-07T21:07:00,5060.43, Motor, Approve Assessment,Jaylen Gardner,Operations Manager
+841,2020-05-08T13:35:00,2020-05-08T23:58:00,5060.43, Motor, Prepare Claim Settlement,Karter Chapman,Operations Manager
+841,2020-05-14T14:21:00,2020-05-14T14:22:00,5060.43, Motor, Approve Claim Settlement,Morgan Roach,Product Manager
+841,2020-05-16T12:13:00,2020-05-16T12:13:00,5060.43, Motor, Execute Claim Settlement,Kamila Leblanc,Claims Administrator
+85,2020-01-11T08:43:00,2020-01-11T09:13:00,3399.3, Motor, Register Claim,Bailee Barr,Claims Administrator
+85,2020-01-11T16:33:00,2020-01-11T16:46:00,3399.3, Motor, Quick Assessment,Rachael Tanner,Claims Officer
+85,2020-01-12T06:42:00,2020-01-12T07:17:00,3399.3, Motor, Finalize Assessment,Alyvia Berger,Claims Officer
+85,2020-01-13T04:42:00,2020-01-13T04:42:00,3399.3, Motor, Approve Assessment,Jaylen Gardner,Operations Manager
+85,2020-01-13T08:08:00,2020-01-13T16:09:00,3399.3, Motor, Prepare Claim Settlement,Rayna Jackson,Operations Manager
+85,2020-01-17T14:00:00,2020-01-17T14:01:00,3399.3, Motor, Approve Claim Settlement,Lexi Larsen,Product Manager
+85,2020-01-18T11:40:00,2020-01-18T11:40:00,3399.3, Motor, Execute Claim Settlement,Kamila Leblanc,Claims Administrator
+888,2020-05-10T20:03:00,2020-05-10T20:42:00,18667.37, Health, Register Claim,Bailee Barr,Claims Administrator
+888,2020-05-10T23:25:00,2020-05-10T23:36:00,18667.37, Health, Quick Assessment,Emilee Dorsey,Claims Officer
+888,2020-05-13T05:27:00,2020-05-13T06:00:00,18667.37, Health, Finalize Assessment,Karter Chapman,Claims Officer
+888,2020-05-13T22:32:00,2020-05-13T22:32:00,18667.37, Health, Approve Assessment,Dallas Melendez,Operations Manager
+888,2020-05-14T00:46:00,2020-05-14T10:34:00,18667.37, Health, Prepare Claim Settlement,Rayna Jackson,Operations Manager
+888,2020-05-23T03:15:00,2020-05-23T03:16:00,18667.37, Health, Approve Claim Settlement,Mitchell Mckay,Product Manager
+888,2020-05-24T13:46:00,2020-05-24T13:46:00,18667.37, Health, Execute Claim Settlement,Kamila Leblanc,Claims Administrator
+889,2020-05-10T22:39:00,2020-05-10T23:19:00,795.5, Motor, Register Claim,Morgan Roach,Claims Administrator
+889,2020-05-11T05:05:00,2020-05-11T05:16:00,795.5, Motor, Quick Assessment,Dallas Melendez,Claims Officer
+889,2020-05-15T13:38:00,2020-05-15T13:53:00,795.5, Motor, Finalize Assessment,Rayna Jackson,Claims Officer
+889,2020-05-16T05:42:00,2020-05-16T05:42:00,795.5, Motor, Approve Assessment,Nathanial Oliver,Operations Manager
+889,2020-05-16T08:19:00,2020-05-16T21:22:00,795.5, Motor, Prepare Claim Settlement,Rayna Jackson,Operations Manager
+889,2020-05-20T16:48:00,2020-05-20T16:49:00,795.5, Motor, Approve Claim Settlement,Lexi Larsen,Product Manager
+889,2020-05-21T14:07:00,2020-05-21T14:07:00,795.5, Motor, Execute Claim Settlement,Kamila Leblanc,Claims Administrator
+904,2020-05-13T19:32:00,2020-05-13T20:20:00,24285.66, Motor, Register Claim,Dallas Melendez,Claims Administrator
+904,2020-05-14T00:30:00,2020-05-14T00:37:00,24285.66, Motor, Quick Assessment,Jaslene Bean,Claims Officer
+904,2020-05-16T06:56:00,2020-05-16T07:27:00,24285.66, Motor, Finalize Assessment,Rayna Jackson,Claims Officer
+904,2020-05-18T04:05:00,2020-05-18T04:05:00,24285.66, Motor, Approve Assessment,Emilee Dorsey,Operations Manager
+904,2020-05-18T06:52:00,2020-05-18T18:52:00,24285.66, Motor, Prepare Claim Settlement,Rayna Jackson,Operations Manager
+904,2020-05-21T09:30:00,2020-05-21T09:31:00,24285.66, Motor, Approve Claim Settlement,Dallas Melendez,Product Manager
+904,2020-05-22T21:48:00,2020-05-22T21:48:00,24285.66, Motor, Execute Claim Settlement,Arturo Horton,Claims Administrator
+940,2020-05-17T06:31:00,2020-05-17T07:08:00,443.77, Motor, Register Claim,Nathanial Oliver,Claims Administrator
+940,2020-05-17T09:58:00,2020-05-17T10:06:00,443.77, Motor, Quick Assessment,Roland Salazar,Claims Officer
+940,2020-05-18T19:30:00,2020-05-18T19:56:00,443.77, Motor, Finalize Assessment,Alyvia Berger,Claims Officer
+940,2020-05-19T15:52:00,2020-05-19T15:52:00,443.77, Motor, Approve Assessment,Jaslene Bean,Operations Manager
+940,2020-05-20T23:31:00,2020-05-21T09:22:00,443.77, Motor, Prepare Claim Settlement,Rayna Jackson,Operations Manager
+940,2020-05-24T20:59:00,2020-05-24T21:00:00,443.77, Motor, Approve Claim Settlement,Lexi Larsen,Product Manager
+940,2020-05-28T01:11:00,2020-05-28T01:11:00,443.77, Motor, Execute Claim Settlement,Katelyn Pitts,Claims Administrator
