@@ -7,16 +7,15 @@ import pandas as pd
 import dash_bootstrap_components as dbc
 
 
-df = pd.read_csv('./data/Claims_Management_Simplified.csv')
+df = pd.read_csv("./data/Claims_Management_Simplified.csv")
 
-font = {
-    'font-family': 'Arial'
-}
+font = {"font-family": "Arial"}
 
 
 def generate_table(df):
-    fig = dash_table.DataTable(df.to_dict('records'), [
-        {"name": i, "id": i} for i in df.columns], id='tbl')
+    fig = dash_table.DataTable(
+        df.to_dict("records"), [{"name": i, "id": i} for i in df.columns], id="tbl"
+    )
     return fig
 
 
@@ -28,17 +27,14 @@ def generate_violin_plot(df):
 app = Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 
-app.layout = html.Div(style={'font-family': font['font-family']}, children=[
-    html.H4(children='Data display'),
+app.layout = html.Div(
+    style={"font-family": font["font-family"]},
+    children=[
+        html.H4(children="Data display"),
+        dcc.Graph(id="example-graph-2", figure=generate_violin_plot(df)),
+        generate_table(df),
+    ],
+)
 
-    dcc.Graph(
-        id='example-graph-2',
-        figure=generate_violin_plot(df)
-    ),
-    generate_table(df),
-
-
-])
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run_server(debug=True)
