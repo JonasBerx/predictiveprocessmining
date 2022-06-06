@@ -2,7 +2,7 @@
 
 ## Setup:
 Run the following commands to set up the virtual environment:
-- venv/Scripts/Activate.bat
+- venv\Scripts\activate (WIN) | source venv/bin/activate (MAC / LINUX)
 - pip install -r requirements.txt
 
 ## General information
@@ -22,3 +22,12 @@ I came to the conclusion that the data we are using lacks some key values to ful
 The next issue is capturing waiting time between the activities. As the mock visualizations show the various activities with a grey box signifying waiting time. It would require me to do on the spot calculations to find the average waiting time between each activity or to precalculate this waiting time before running a model. Efficiency of calculation will define this.
 
 The afternoon I spent working on transforming the data into usable bits. Some minor reworks in existing code happened. Currently the data is being read, each case's flow is made and is waiting to be grouped by variant type. If this works as I think it works there wont be a need for preprocessing in Apromore anymore.
+
+### 6th June 2022
+Today i spent trying to visualize case variants for a tiny showcase and idea approval. The scope is clear, the visualisation however I'm not 100% sure of, hence the activities of today.
+
+The morning was spent figuring out how to use pandas to do the heavy lifting for me. I learned a few new things and managed to capture the total time of each process and the processing time of each activity. The next step is to capture the waiting time between each activity as this time will be colored differently.
+The current visualisation gives some good info. Just looks ugly :D. I will improve the visual aspect once the data is correctly captured.
+
+The afternoon I spent figuring out how I will add a case variant identifier to the dataset. Apromose can do this but requires manual work which I'd prefer to avoid.
+Im trying yo find a reasonable and efficient way to solve this problem. I've decided to wait with this implementation until I can meet with Marlon to ask if there is a code sample from Apromore that does the sampling.

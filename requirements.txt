@@ -4,3 +4,4 @@ brotli
 pandas
 jupyter-dash
 dash_bootstrap_components
+pylint
