@@ -18,12 +18,6 @@ df = pd.read_csv('./data/conform_SLA.csv')
 df.start_time = pd.to_datetime(df.start_time)
 df.end_time = pd.to_datetime(df.end_time)
 
-df1.start_time = pd.to_datetime(df1.start_time)
-df3.start_time = pd.to_datetime(df3.start_time)
-
-df1.end_time = pd.to_datetime(df1.end_time)
-df3.end_time = pd.to_datetime(df3.end_time)
-
 # Step II: Case variant grouping.
 
 
@@ -110,30 +104,37 @@ def calc_waiting_time_between(frame):
     return frame
 
 
-print(df)
+# Case variant collection
 ddf = df.groupby('case_id')['Activity'].apply(
     lambda x: ",".join(list(x))).reset_index()
 ddf = ddf.rename(columns={'Activity': 'a_list'})
 ddf = ddf.groupby(ddf.a_list).agg(lambda col: col.tolist()).reset_index()
-print(ddf.case_id)
+ddf['len'] = ddf.case_id.map(len)
+ddf = ddf.sort_values('len', ascending=False)
+ddf = ddf.reset_index()
+# print(ddf.case_id)
+
+# Add case variant index to original dataframe
+df['case_variant'] = -1
+
+for index, r in df.iterrows():
+    # print(r.case_id)
+    for jndex, s in ddf.iterrows():
+        df.loc[df.case_id.isin(s.case_id),
+               'case_variant'] = ddf.loc[jndex].name
+
+
+# print(df)
+
 # Apply transformation functions
-# df = calc_activity_process_time(df)
-# df = df.groupby(df.case_id).apply(calc_total_process_time_start)
-# df = df.groupby(df.case_id).apply(calc_total_process_time_end)
-# df = df.groupby(df.case_id).apply(calc_waiting_time_between)
+df = calc_activity_process_time(df)
+df = df.groupby(df.case_id).apply(calc_total_process_time_start)
+df = df.groupby(df.case_id).apply(calc_total_process_time_end)
+df = df.groupby(df.case_id).apply(calc_waiting_time_between)
 
 
 # print(ddf)
-
-df1 = calc_activity_process_time(df1)
-df1 = df1.groupby(df1.case_id).apply(
-    calc_total_process_time_start)
-
-df3 = calc_activity_process_time(df3)
-df3 = df1.groupby(df1.case_id).apply(
-    calc_total_process_time_start)
-
-# print(df)
+print(df)
 
 by_act = df.groupby(df.Activity)
 q = by_act.get_group(' Register Claim')
@@ -144,7 +145,7 @@ q = by_act.get_group(' Register Claim')
 def generate_violin_plot(df):
     # Y value will be case variant.
     # range_x=[0, 1000],
-    fig = px.violin(df, y="processing_time", color="Activity", x="Activity",
+    fig = px.violin(df, y="processing_time", color="case_variant", x="Activity",
                     title="case variant flows")
     return fig
 
@@ -164,11 +165,7 @@ app.layout = html.Div(style={'font-family': font['font-family']}, children=[
 
     dcc.Graph(
         id='example-graph-1',
-        figure=generate_violin_plot(df1)
-    ),
-    dcc.Graph(
-        id='example-graph-2',
-        figure=generate_violin_plot(df3)
+        figure=generate_violin_plot(df)
     ),
 ])
 
