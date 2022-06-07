@@ -29,5 +29,12 @@ Today i spent trying to visualize case variants for a tiny showcase and idea app
 The morning was spent figuring out how to use pandas to do the heavy lifting for me. I learned a few new things and managed to capture the total time of each process and the processing time of each activity. The next step is to capture the waiting time between each activity as this time will be colored differently.
 The current visualisation gives some good info. Just looks ugly :D. I will improve the visual aspect once the data is correctly captured.
 
-The afternoon I spent figuring out how I will add a case variant identifier to the dataset. Apromose can do this but requires manual work which I'd prefer to avoid.
+The afternoon I spent figuring out how I will add a case variant identifier to the dataset. Apromore can do this but requires manual work which I'd prefer to avoid.
 Im trying yo find a reasonable and efficient way to solve this problem. I've decided to wait with this implementation until I can meet with Marlon to ask if there is a code sample from Apromore that does the sampling.
+
+### 7th June 2022
+Today I will spent finding the waiting time between each activity as this is a vital part of the visualisation.
+I solved the end_time miscalculation by splitting the methods and handling end_time calculation different than the start_time calculation. end time is now as follows:
+rel_end_time = (processing_time + rel_start_time)
+
+This also removes the 1 minute offset the previous methods created.

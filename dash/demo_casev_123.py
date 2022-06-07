@@ -8,13 +8,20 @@ import numpy as np
 from dash import *
 from numpy import timedelta64
 
-# df = pd.read_csv('./data/variant_files/case_variant_3.csv')
+df1 = pd.read_csv('./data/variant_files/case_variant_3.csv')
+df3 = pd.read_csv('./data/variant_files/case_variant_1.csv')
 df = pd.read_csv('./data/conform_SLA.csv')
 
 # Transform into usable data for violin plot
 # Step I: Data preprocessing
 df.start_time = pd.to_datetime(df.start_time)
 df.end_time = pd.to_datetime(df.end_time)
+
+df1.start_time = pd.to_datetime(df1.start_time)
+df3.start_time = pd.to_datetime(df3.start_time)
+
+df1.end_time = pd.to_datetime(df1.end_time)
+df3.end_time = pd.to_datetime(df3.end_time)
 
 # Step II: Case variant grouping.
 
@@ -40,13 +47,12 @@ def case_variant_clustering(frame):
 
     # 51 different flows
     print(len(dup_free))
-
+    print(len(flows))
     frame = frame.groupby(frame.case_id, sort=True)
     return frame
 
 
-print(df.dtypes)
-print(case_variant_clustering(df).head(7))
+# case_variant_clustering(df)
 
 
 def calc_activity_process_time(frame):
@@ -55,7 +61,7 @@ def calc_activity_process_time(frame):
       Add new colum with processing time.
     """
     # 1. Calculate difference in date time of row
-    diff = (frame.end_time - df.start_time) / np.timedelta64(1, 'm')
+    diff = (frame.end_time - frame.start_time) / np.timedelta64(1, 'm')
 
     # 2. In case there is no time. set to 0
     diff[diff.isna()] = pd.Timedelta(0)
@@ -66,12 +72,12 @@ def calc_activity_process_time(frame):
     return frame
 
 
-def calc_total_process_time(frame):
+def calc_total_process_time_start(frame):
     """
-    Takes a data frame with a start_time and end_time column;
-    Add new colum with cummulative sum for start_time and end_time for each case_id.
+    Takes a data frame with a start_time column;
+    Add new colum with cummulative sum for start_time for each case_id.
     """
-    # 1. create the difference array from start_time and end_time
+    # 1. create the difference array from start_time
     r1 = frame.start_time.diff()
     r2 = frame.end_time.diff()
 
@@ -81,17 +87,39 @@ def calc_total_process_time(frame):
 
     # 3. convert to seconds and use cumsum -> new column
     frame["relative_start_time"] = np.cumsum(r1.dt.total_seconds().values / 60)
-    # TODO end_time does not take into consideration the processing time of the first activity (Register claim)
-    frame["relative_end_time"] = np.cumsum(r2.dt.total_seconds().values / 60)
 
     return frame
 
 
-# def calc_waiting_time_between(frame):
+def calc_total_process_time_end(frame):
+    # 1. calculate cumulative end_time based on processing time and relative start time.
+    cprt = frame.relative_start_time + frame.processing_time
+    # 2. Create new column with resulted values
+    frame["relative_end_time"] = cprt
+
+    return frame
+
+
+def calc_waiting_time_between(frame):
+
+    return frame
+
 
 # Apply transformation functions
 df = calc_activity_process_time(df)
-df = df.groupby(df.case_id).apply(calc_total_process_time)
+df = df.groupby(df.case_id).apply(calc_total_process_time_start)
+df = df.groupby(df.case_id).apply(calc_total_process_time_end)
+
+
+print(df)
+
+df1 = calc_activity_process_time(df1)
+df1 = df1.groupby(df1.case_id).apply(
+    calc_total_process_time_start)
+
+df3 = calc_activity_process_time(df3)
+df3 = df1.groupby(df1.case_id).apply(
+    calc_total_process_time_start)
 
 # print(df)
 
@@ -115,14 +143,20 @@ def generate_violin_plot(df):
 app = Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
 font = {
     'font-family': 'Arial'
+
+
 }
 
 app.layout = html.Div(style={'font-family': font['font-family']}, children=[
     html.H4(children='Data display'),
 
     dcc.Graph(
+        id='example-graph-1',
+        figure=generate_violin_plot(df1)
+    ),
+    dcc.Graph(
         id='example-graph-2',
-        figure=generate_violin_plot(df)
+        figure=generate_violin_plot(df3)
     ),
 ])
 
