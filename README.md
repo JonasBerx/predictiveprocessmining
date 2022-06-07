@@ -38,3 +38,9 @@ I solved the end_time miscalculation by splitting the methods and handling end_t
 rel_end_time = (processing_time + rel_start_time)
 
 This also removes the 1 minute offset the previous methods created.
+
+In the afternoon I managed to complete the majority of the data preprocessing.
+Right now the dataset is split into their case_variants. where each activity has their relative time compared to the previous task of their process. the waiting time between the activities (waiting time between 2 activities is on the line of the starting activity.) the processing time of the activity.
+The violin plot is currently pretty rough as it shows all variants together in the same diagram. The next task i think is to either split the plots per case diagrams however Dash allows for isolation already so this would mostly be a visual improvement.
+
+Some statistics were already given to about the dataset. I will now try to solidify these by making some calculations like the claim value of the conform and nonconform processes, the amount of rework loops in certain processes, etc...

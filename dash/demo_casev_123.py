@@ -1,17 +1,13 @@
 # App running at http://127.0.0.1:8050/
 # Execute with `python demo_casev_123.py`
 
-from cmath import exp
 import dash_bootstrap_components as dbc
 import plotly.express as px
 import pandas as pd
 import numpy as np
 from dash import *
-from numpy import sort, timedelta64
 
-df1 = pd.read_csv('./data/variant_files/case_variant_3.csv')
-df3 = pd.read_csv('./data/variant_files/case_variant_1.csv')
-df = pd.read_csv('./data/conform_SLA.csv')
+df = pd.read_csv('./data/nonconform_SLA.csv')
 
 # Transform into usable data for violin plot
 # Step I: Data preprocessing
@@ -139,19 +135,12 @@ print(df)
 by_act = df.groupby(df.Activity)
 q = by_act.get_group(' Register Claim')
 
-# TODO Visualize violin plot with case variant 1
-
-
 def generate_violin_plot(df):
     # Y value will be case variant.
     # range_x=[0, 1000],
     fig = px.violin(df, y="processing_time", color="case_variant", x="Activity",
                     title="case variant flows")
     return fig
-
-
-# TODO Incrementally add case variant 2 / 3
-
 
 app = Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
 font = {
