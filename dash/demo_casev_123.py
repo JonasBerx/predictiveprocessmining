@@ -1,12 +1,13 @@
 # App running at http://127.0.0.1:8050/
 # Execute with `python demo_casev_123.py`
 
+from cmath import exp
 import dash_bootstrap_components as dbc
 import plotly.express as px
 import pandas as pd
 import numpy as np
 from dash import *
-from numpy import timedelta64
+from numpy import sort, timedelta64
 
 df1 = pd.read_csv('./data/variant_files/case_variant_3.csv')
 df3 = pd.read_csv('./data/variant_files/case_variant_1.csv')
@@ -79,11 +80,9 @@ def calc_total_process_time_start(frame):
     """
     # 1. create the difference array from start_time
     r1 = frame.start_time.diff()
-    r2 = frame.end_time.diff()
 
     # 2. fill the first value (NaT) with zero
     r1[r1.isna()] = pd.Timedelta(0)
-    r2[r2.isna()] = pd.Timedelta(0)
 
     # 3. convert to seconds and use cumsum -> new column
     frame["relative_start_time"] = np.cumsum(r1.dt.total_seconds().values / 60)
@@ -102,16 +101,29 @@ def calc_total_process_time_end(frame):
 
 def calc_waiting_time_between(frame):
 
+    wtt = frame.relative_start_time-frame.relative_end_time.shift(1)
+
+    wtt[wtt.isna()] = 0.0
+
+    frame["waiting_time"] = wtt
+
     return frame
 
 
-# Apply transformation functions
-df = calc_activity_process_time(df)
-df = df.groupby(df.case_id).apply(calc_total_process_time_start)
-df = df.groupby(df.case_id).apply(calc_total_process_time_end)
-
-
 print(df)
+ddf = df.groupby('case_id')['Activity'].apply(
+    lambda x: ",".join(list(x))).reset_index()
+ddf = ddf.rename(columns={'Activity': 'a_list'})
+ddf = ddf.groupby(ddf.a_list).agg(lambda col: col.tolist()).reset_index()
+print(ddf.case_id)
+# Apply transformation functions
+# df = calc_activity_process_time(df)
+# df = df.groupby(df.case_id).apply(calc_total_process_time_start)
+# df = df.groupby(df.case_id).apply(calc_total_process_time_end)
+# df = df.groupby(df.case_id).apply(calc_waiting_time_between)
+
+
+# print(ddf)
 
 df1 = calc_activity_process_time(df1)
 df1 = df1.groupby(df1.case_id).apply(
