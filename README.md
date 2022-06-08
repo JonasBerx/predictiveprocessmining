@@ -14,6 +14,10 @@ The origination of the data is the event log, split into two groups:
 
 ## Small showcase:
 
+The webpage resulting in running the script contains a separate diagram for each case varaint found in the dataset.
+Dash' simple UI that makes it possible to isolate 1 or more events from a plot to study in depth.
+Some sample showcase's below:
+
 #### Case Variant 1
 ![Case Variant 1](./pics/case_variant_1.PNG)
 
