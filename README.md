@@ -11,6 +11,22 @@ The origination of the data is the event log, split into two groups:
 - Conform SLA (within 14 days)
 - Non conform SLA
 
+
+## Small showcase:
+
+#### Case Variant 1
+![Case Variant 1](./pics/case_variant_1.PNG)
+
+#### Case Variant 2
+![Case Variant 2](./pics/case_variant_2.PNG)
+
+#### Isolation of a single activity from one case variant
+![Register Activity Isolated](./pics/reg_claim_cv1.PNG)
+
+#### Isolation of three activities from the same case variant
+![Three activities from CV1 isolated](./pics/act_1_2_3_cv1.PNG)
+
+
 #### Minor note about data
 The only data captured are the events, this is obvious. However this might not be sufficient to map out the waiting time between activities. I propose that waiting times are also captured for each activity and stored in a different dataset. This will potentially improve the visualisation of the violin graph.
 
