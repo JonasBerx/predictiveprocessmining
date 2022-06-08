@@ -44,3 +44,12 @@ Right now the dataset is split into their case_variants. where each activity has
 The violin plot is currently pretty rough as it shows all variants together in the same diagram. The next task i think is to either split the plots per case diagrams however Dash allows for isolation already so this would mostly be a visual improvement.
 
 Some statistics were already given to about the dataset. I will now try to solidify these by making some calculations like the claim value of the conform and nonconform processes, the amount of rework loops in certain processes, etc...
+
+
+### 8th June 2022
+This morning I made some final touches to the preproccesing methods. The data is now, as far as the demo scope goes, fully transformed and usable for visualization.
+I wrote a small methods that splits the dataset by case variant and generates a separate violin plot for each of them. We can now see the individual task performance of each case variants activities.
+
+The next step is figuring out how to incorporate and visualize waiting times. I think I should use a different plot to visualize this, or I have to create a new row between each activity for the waiting time. The second approach sounds a bit rough to do but I will tackle both ideas.
+
+Quick note on the visual aspect of each case variant. The plotting tool allows for isolation (by color -> diff activity). So in an overview this plot looks really weird because prepare claim settlement has a long duration. You can select the tasks you want to inspect and then the plots look much more like violin plots.

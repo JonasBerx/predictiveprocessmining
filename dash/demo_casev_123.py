@@ -14,37 +14,8 @@ df = pd.read_csv('./data/nonconform_SLA.csv')
 df.start_time = pd.to_datetime(df.start_time)
 df.end_time = pd.to_datetime(df.end_time)
 
-# Step II: Case variant grouping.
 
-
-def case_variant_clustering(frame):
-    flows = []
-    flow = []
-    # First for loop, splitting rows by case_id
-    case_id = df['case_id'][0]
-    for ind in df.index:
-        if case_id != df['case_id'][ind]:
-            case_id = df['case_id'][ind]
-
-            flows.append(flow)
-            print(flow)
-            flow = [' Register Claim']
-        else:
-            flow.append(df['Activity'][ind])
-    dup_free = []
-    for x in flows:
-        if x not in dup_free:
-            dup_free.append(x)
-
-    # 51 different flows
-    print(len(dup_free))
-    print(len(flows))
-    frame = frame.groupby(frame.case_id, sort=True)
-    return frame
-
-
-# case_variant_clustering(df)
-
+# Step 2: Transformative preprocessing
 
 def calc_activity_process_time(frame):
     """
@@ -100,47 +71,65 @@ def calc_waiting_time_between(frame):
     return frame
 
 
-# Case variant collection
-ddf = df.groupby('case_id')['Activity'].apply(
-    lambda x: ",".join(list(x))).reset_index()
-ddf = ddf.rename(columns={'Activity': 'a_list'})
-ddf = ddf.groupby(ddf.a_list).agg(lambda col: col.tolist()).reset_index()
-ddf['len'] = ddf.case_id.map(len)
-ddf = ddf.sort_values('len', ascending=False)
-ddf = ddf.reset_index()
-# print(ddf.case_id)
+def calc_case_variants(frame):
+    """
+    This method takes a Pandas Dataframe and returns the same frame but with a case variant identifier
+        - Perform equivalent of GROUP_CONCAT to combine all the flows of each case
+        - Remove duplicates and reindex
+        - Collect all case_id's that follow the case_variant flow
+        - Assing case_variant id to the original dataframe
+    """
+    # Case variant collection
+    ddf = frame.groupby('case_id')['Activity'].apply(
+        lambda x: ",".join(list(x))).reset_index()
+    ddf = ddf.rename(columns={'Activity': 'a_list'})
+    ddf = ddf.groupby(ddf.a_list).agg(lambda col: col.tolist()).reset_index()
+    ddf['len'] = ddf.case_id.map(len)
+    ddf = ddf.sort_values('len', ascending=False)
+    ddf = ddf.reset_index()
 
-# Add case variant index to original dataframe
-df['case_variant'] = -1
+    # Add case variant index to original dataframe
+    frame['case_variant'] = -1
 
-for index, r in df.iterrows():
-    # print(r.case_id)
     for jndex, s in ddf.iterrows():
-        df.loc[df.case_id.isin(s.case_id),
-               'case_variant'] = ddf.loc[jndex].name
+        frame.loc[frame.case_id.isin(s.case_id),
+                  'case_variant'] = ddf.loc[jndex].name
 
+    return frame
 
-# print(df)
 
 # Apply transformation functions
+df = calc_case_variants(df)
 df = calc_activity_process_time(df)
 df = df.groupby(df.case_id).apply(calc_total_process_time_start)
 df = df.groupby(df.case_id).apply(calc_total_process_time_end)
 df = df.groupby(df.case_id).apply(calc_waiting_time_between)
 
+# Basic violin plot generation function
 
-# print(ddf)
-print(df)
 
-by_act = df.groupby(df.Activity)
-q = by_act.get_group(' Register Claim')
-
-def generate_violin_plot(df):
-    # Y value will be case variant.
-    # range_x=[0, 1000],
-    fig = px.violin(df, y="processing_time", color="case_variant", x="Activity",
-                    title="case variant flows")
+def generate_violin_plot(df, i):
+    fig = px.violin(df, y="processing_time", color="Activity", x="Activity",
+                    title="Case Variant " + str(i), box=True).update_layout(height=600, width=1600)
     return fig
+
+
+# Make a dict of dataframes, split by case variant
+dfs = dict(tuple(df.groupby('case_variant')))
+
+
+def generate_diagrams(dict):
+    res = [html.H4(children='Data display')]
+    for i in range(0, len(dict)):
+        dff = dict[i]
+        fig = dcc.Graph(
+            id="case_variant"+str(i),
+            figure=generate_violin_plot(dff, i)
+        )
+        res.append(fig)
+
+    return res
+
 
 app = Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
 font = {
@@ -149,14 +138,8 @@ font = {
 
 }
 
-app.layout = html.Div(style={'font-family': font['font-family']}, children=[
-    html.H4(children='Data display'),
-
-    dcc.Graph(
-        id='example-graph-1',
-        figure=generate_violin_plot(df)
-    ),
-])
+app.layout = html.Div(
+    style={'font-family': font['font-family']}, children=generate_diagrams(dfs))
 
 if __name__ == '__main__':
     app.run_server(debug=True)
