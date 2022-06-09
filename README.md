@@ -88,3 +88,6 @@ https://plotly.com/python/bar-charts/
 One of the charts here, horizontal cumulative bar ,might be a good solution for the problem. I'm not sure it will work but i think with some more small transformations i might be able to capture the flow of 1 case. This i would then need to scale to the different case variants, which in turn brings another set of problems like overlap. I tend to aim more towards a distroplot for this.
 
 Color schemes work now. It took me a while to solve this. I will most likely adjust the dataset to have a number for the activity instead of the string value. This will ask for some refactoring of existing code. This will make the code also more efficient.
+
+
+I spent some time in the afternoon finding a better plot to visualise the distribution of the activity processing times and waiting times. Im waiting for confirmation before actually implementing this but I did create a concept model.
