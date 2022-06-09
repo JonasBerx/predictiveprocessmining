@@ -76,3 +76,15 @@ Quick note on the visual aspect of each case variant. The plotting tool allows f
 
 An idea that came up during the afternoon was to use a (DistPlots)[https://plotly.com/python/distplot/] to represent the distribution of the process duration with waiting times included. Since the waiting times are already calculated and the activity processing time is also there we can plot the activities as distributions of their average duration with greyspace (waiting time) average durations in between.
 Im experimenting a little with this plot to find a way + how to transform the data to visualise this.
+
+### 9th June 2022
+I started the day with a simple waiting time visualisation. The webpage is now split into 2 pages, 1 for processing times and 1 for waiting time visualisation.
+It's basically the same concept as the processing time except with a subset of the data containing the waiting time instead of the processing time. The goal today is to find a way to get a combined view of the waiting time and the processing time.
+
+A small visual update I will push is the hardcoding of a color scheme. Currently Dash automatically assigns a color to a plot based on its position in the list. I want to make sure that each Activity will always have a unique color. This makes it easier to identify and compare.
+
+
+https://plotly.com/python/bar-charts/
+One of the charts here, horizontal cumulative bar ,might be a good solution for the problem. I'm not sure it will work but i think with some more small transformations i might be able to capture the flow of 1 case. This i would then need to scale to the different case variants, which in turn brings another set of problems like overlap. I tend to aim more towards a distroplot for this.
+
+Color schemes work now. It took me a while to solve this. I will most likely adjust the dataset to have a number for the activity instead of the string value. This will ask for some refactoring of existing code. This will make the code also more efficient.

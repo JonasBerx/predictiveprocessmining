@@ -7,7 +7,7 @@ import pandas as pd
 import numpy as np
 from dash import *
 
-df = pd.read_csv('./data/nonconform_SLA.csv')
+df = pd.read_csv('./data/conform_SLA.csv')
 
 # Transform into usable data for violin plot
 # Step I: Data preprocessing
@@ -105,12 +105,65 @@ df = df.groupby(df.case_id).apply(calc_total_process_time_start)
 df = df.groupby(df.case_id).apply(calc_total_process_time_end)
 df = df.groupby(df.case_id).apply(calc_waiting_time_between)
 
+# Visualize waiting times
+wdf = df[['case_id', 'case_variant', 'Activity', 'waiting_time']]
+wdfs = dict(tuple(wdf.groupby('case_variant')))
+
+test_df1 = df.groupby(df.case_id).get_group(103)
+test_df2 = df.groupby(df.case_id).get_group(1)
+
+
+def generate_violin_plot_waiting_times(df, i):
+    fig = px.violin(df, y="waiting_time", color="Activity", x="Activity",
+                    title="Case Variant " + str(i), box=True, color_discrete_map={
+                        " Register Claim": 'red',
+                        " Quick Assessment": 'orange',
+                        " Assess Claim": 'yellow',
+                        " Finalize Assessment": 'limegreen',
+                        " Approve Assessment": 'green',
+                        " Prepare Claim Settlement": 'plum',
+                        " Approve Claim Settlement": 'cyan',
+                        " Execute Claim settlement": 'skyblue',
+                        " Analyze Claim": 'blue',
+                        " Amend Assessment": 'purple',
+                        "t": 'magenta',
+                        "q": 'pink'
+                    }).update_layout(height=600, width=1600)
+    return fig
+
+
+def generate_diagrams_waiting_time(dict):
+    res = [html.H4(children='Data display')]
+    for i in range(0, len(dict)):
+        dff = dict[i]
+        fig = dcc.Graph(
+            id="case_variant"+str(i),
+            figure=generate_violin_plot_waiting_times(dff, i)
+        )
+        res.append(fig)
+
+    return res
+
+
 # Basic violin plot generation function
 
 
 def generate_violin_plot(df, i):
     fig = px.violin(df, y="processing_time", color="Activity", x="Activity",
-                    title="Case Variant " + str(i), box=True).update_layout(height=600, width=1600)
+                    title="Case Variant " + str(i), box=True, color_discrete_map={
+                        " Register Claim": 'red',
+                        " Quick Assessment": 'orange',
+                        " Assess Claim": 'yellow',
+                        " Finalize Assessment": 'limegreen',
+                        " Approve Assessment": 'green',
+                        " Prepare Claim Settlement": 'plum',
+                        " Approve Claim Settlement": 'cyan',
+                        " Execute Claim settlement": 'skyblue',
+                        " Analyze Claim": 'blue',
+                        " Amend Assessment": 'purple',
+                        "t": 'magenta',
+                        "q": 'pink'
+                    }).update_layout(height=600, width=1600)
     return fig
 
 
@@ -131,15 +184,74 @@ def generate_diagrams(dict):
     return res
 
 
-app = Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
-font = {
-    'font-family': 'Arial'
+app = Dash(__name__, suppress_callback_exceptions=True,
+           external_stylesheets=[dbc.themes.BOOTSTRAP])
+
+app.layout = html.Div([
+    dcc.Location(id='url', refresh=False),
+    html.Div(id='page-content')
+])
 
 
-}
+test_page = html.Div([
+    dcc.Graph(
+        id="test",
+        figure=generate_violin_plot(test_df1, 0)
+    ),
+    dcc.Graph(
+        id="test",
+        figure=generate_violin_plot(test_df2, 1)
+    )
+])
 
-app.layout = html.Div(
-    style={'font-family': font['font-family']}, children=generate_diagrams(dfs))
+index_page = html.Div([
+    html.H1("Predictive process mining visualisation demo"),
+    dcc.Link('Processing times', href='/pro'),
+    html.Br(),
+    dcc.Link('Waiting times', href='/wait'),
+    html.Br(),
+
+])
+
+page_1_layout = html.Div(
+    children=[html.H1("Processing Times visualisation - Violin plot"),
+              dcc.Link('Home', href='/'),
+              html.Br(),
+              dcc.Link('Waiting times', href='/wait'),
+              ] + (generate_diagrams(dfs))
+)
+
+page_2_layout = html.Div(
+    children=[
+        html.H1("Waiting Times visualisation - Violin plot"),
+        dcc.Link('Home', href='/'),
+        html.Br(),
+        dcc.Link('Processing times', href='/pro'),
+    ] + (generate_diagrams_waiting_time(wdfs))
+)
+
+# Update the index
+
+
+@callback(Output('page-content', 'children'),
+          [Input('url', 'pathname')])
+def display_page(pathname):
+    if pathname == '/pro':
+        return page_1_layout
+    elif pathname == '/wait':
+        return page_2_layout
+    else:
+        return index_page
+    # You could also return a 404 "URL not found" page here
+
 
 if __name__ == '__main__':
     app.run_server(debug=True)
+
+
+# font = {
+#     'font-family': 'Arial'
+# }
+
+# app.layout = html.Div(
+#     style={'font-family': font['font-family']}, children=generate_diagrams_waiting_time(wdfs))
