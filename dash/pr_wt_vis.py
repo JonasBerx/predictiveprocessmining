@@ -1,8 +1,6 @@
 import dash_html_components as html
 import dash_core_components as dcc
 import dash
-from re import X
-from turtle import color
 from preprocessing import transform_data
 import plotly.figure_factory as ff
 import pandas as pd
@@ -31,4 +29,3 @@ app.layout = html.Div([
 
 # Turn off reloader if inside Jupyter  # Turn off reloader if inside Jupyter
 app.run_server(debug=True)
- 
