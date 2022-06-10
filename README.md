@@ -91,3 +91,16 @@ Color schemes work now. It took me a while to solve this. I will most likely adj
 
 
 I spent some time in the afternoon finding a better plot to visualise the distribution of the activity processing times and waiting times. Im waiting for confirmation before actually implementing this but I did create a concept model.
+
+### 10th June 2022
+I will spend my time today finding different solutions for the visualisation of the complete flow of a case variant (waiting time included)
+I will also change the color scheme to the colors described in the vis.drawio document.
+
+I'm trying to figure out how Dash can show a multiplot distribution so that I can visualize all activities. So far no success. I might explore another library today to solve this.
+
+https://matplotlib.org/stable/plot_types/stats/eventplot.html#sphx-glr-plot-types-stats-eventplot-py
+
+I will test these ideas in the afternoon. I think an eventplot might be what we're looking for. I can also capture the waiting time between the activities then without having to assign a separate row.
+
+During the standup meeting i learned that there is a code fragment to get the waiting times for each activity.
+I will refer to this fragment and redesign the transformation methods so they work more efficient next. The dataset is too small to notice a performance issue, I will receive a larger dataset to test the efficiency of the code later.
