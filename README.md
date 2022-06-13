@@ -104,3 +104,11 @@ I will test these ideas in the afternoon. I think an eventplot might be what we'
 
 During the standup meeting i learned that there is a code fragment to get the waiting times for each activity.
 I will refer to this fragment and redesign the transformation methods so they work more efficient next. The dataset is too small to notice a performance issue, I will receive a larger dataset to test the efficiency of the code later.
+
+
+### 13th June 2022
+Today was a rough day without much progress.
+I will ask some help to get me sorted.
+
+I'm currently exploring how to make the code more efficient so it can handle larger datasets but this will most likely require a large rewrite of the existing code.
+This will be my task for this week, as I will need to read and learn a lot about Pandas before we can continue.
