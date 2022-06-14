@@ -112,3 +112,33 @@ I will ask some help to get me sorted.
 
 I'm currently exploring how to make the code more efficient so it can handle larger datasets but this will most likely require a large rewrite of the existing code.
 This will be my task for this week, as I will need to read and learn a lot about Pandas before we can continue.
+
+### 14th June 2022
+I spent the morning working on reworking the project. 
+I managed to install the external packages that do a lot of the heavy lifting for me.
+The next stop is continuing the rewrite of the preprocessing methods to be more efficient for larger datasets. 
+Afterwards I will spend some more time on combining the dataset to visualise the expected results better.
+
+-- Some statistics of the current process:
+- I've timed the execution time of the full preprocessing execution, which lies around 2 minutes.
+- Current timing of the different steps are (Government dataset):
+  - Case variant discovery: 4.911 sec
+  - Activity processing time calculation: 0.005 sec
+  - Cumulative start process time calculation: 48.287 sec
+  - Cumulative end process time calculation: 17.429 sec
+  - Waiting time calculation: 44.035 sec
+
+So it is notable that the cumulative start process time calculation and the waiting time calculation take the longest out of all steps
+I will further investigate how to optimize this.
+The processing time of one row is less than 0.001 second. I don't know how to make this more efficient
+I think the execution time of this process is relatively optimized.
+I will hash the case variant flows to optimize this a little at least.
+
+After hashing the case variants the results are: (~111 sec)
+- Case variant discovery: 2.537 sec
+- Activity processing time calculation: 0.005 sec
+- Cumulative start process time calculation: 49.001 sec
+- Cumulative end process time calculation: 17.274 sec
+- Waiting time calculation: 42.978 sec
+
+Showing a halving in processing time on that first step.
