@@ -22,53 +22,61 @@ The preprocessing steps go as follows:
       Find out the different flows inside the dataset and assign a unique identifier to each flow,
       then assign that identifier to each case within that flow.
 """
+import time
 import pandas as pd
 import numpy as np
 import hashlib
 
 def custom_hash(obj):
-    return int.from_bytes(hashlib.sha256(obj.encode('utf-8')).digest()[:4], 'little')
+    return int.from_bytes(hashlib.sha256(obj.encode('utf-8')).digest()[:1], 'little')
+
+def convert_activity_to_int(frame):
+    frame['Activity'] = frame['Activity'].apply(custom_hash)
+    return frame
 
 
 def write_to_csv():
     frame = transform_data()
     frame.to_csv('./data/results/data.csv', sep=',', encoding='utf-8')
-    print(frame.dtypes)
 
 
 def transform_data():
     # Only select columns we actually use here.
     columns = ["case_id", "start_time", "end_time", "Activity"]
-    df = pd.read_csv('./data/conform_SLA.csv')[columns]
+    df = pd.read_csv('./data/Application_to_Approval_Government_Agency.csv')[columns]
     # Convert start_time and end_time to datetime types
     df.start_time = pd.to_datetime(df.start_time)
     df.end_time = pd.to_datetime(df.end_time)
     # print(df)
+    startTime = time.time()
+    df = convert_activity_to_int(df)
+    endTime = time.time()
+    print(str(endTime - startTime) + " sec")
 
-    # startTime = time.time()
+    startTime = time.time()
     df = calc_case_variants(df)
-    # endTime = time.time()
-    # print(str(endTime - startTime) + " sec")
+    endTime = time.time()
+    print(str(endTime - startTime) + " sec")
 
-    # startTime = time.time()
+    startTime = time.time()
     df = calc_activity_process_time(df)
-    # endTime = time.time()
-    # print(str(endTime - startTime) + " sec")
+    endTime = time.time()
+    print(str(endTime - startTime) + " sec")
 
-    # startTime = time.time()
+    startTime = time.time()
     df = df.groupby(df.case_id).apply(calc_total_process_time_start)
-    # endTime = time.time()
-    # print(str(endTime - startTime) + " sec")
+    endTime = time.time()
+    print(str(endTime - startTime) + " sec")
 
-    # startTime = time.time()
+    startTime = time.time()
     df = df.groupby(df.case_id).apply(calc_total_process_time_end)
-    # endTime = time.time()
-    # print(str(endTime - startTime) + " sec")
+    endTime = time.time()
+    print(str(endTime - startTime) + " sec")
 
-    # startTime = time.time()
+    startTime = time.time()
     df = df.groupby(df.case_id).apply(calc_waiting_time_between)
-    # endTime = time.time()
-    # print(str(endTime - startTime) + " sec")
+    endTime = time.time()
+    print(str(endTime - startTime) + " sec")
 
     return df
 
@@ -139,11 +147,11 @@ def calc_case_variants(frame):
     """
     # Case variant collection through hashing
     ddf = frame.groupby('case_id')['Activity'].transform(
-        lambda x: custom_hash(",".join(list(x))))
+        lambda x: hash(tuple(x)))
     # ddf = frame.rename(columns={'Activity': 'a_list'})
     # ddf = frame.sort_values('a_list', ascending=False)
     frame['case_variant'] = ddf
-    frame['case_variant'] = frame['case_variant'].astype('string')
+    # frame['case_variant'] = frame['case_variant'].astype('string')
     # LEAVE THIS CODE HERE JUST IN CASE
 
     # Case variant collection
