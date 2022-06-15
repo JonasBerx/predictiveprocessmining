@@ -105,3 +105,9 @@ After hashing the case variants the results are: (~111 sec)
 - Waiting time calculation: 42.978 sec
 
 Showing a halving in processing time on that first step.
+
+### 15th June 2022
+
+Meeting day today. 
+I'm mostly focussing on cleaning up this mess a little, updating the READMe with a new more up-to-date demo and refactoring a little code
+Currently I'm trying to make sense of the hashing function so that the results are decently interpretable. I might write a custom hashing method as long as it doesn't impact the processing time.
