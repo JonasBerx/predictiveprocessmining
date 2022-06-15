@@ -58,6 +58,7 @@ def generate_violin_plot(df, i):
 def generate_diagrams(dict):
     res = [html.H4(children='Data display')]
     for key, value in dict.items():
+        print(value)
         dff = value
         fig = dcc.Graph(
             id="case_variant"+str(key),
