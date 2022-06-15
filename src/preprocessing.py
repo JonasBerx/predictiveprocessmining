@@ -22,10 +22,12 @@ The preprocessing steps go as follows:
       Find out the different flows inside the dataset and assign a unique identifier to each flow,
       then assign that identifier to each case within that flow.
 """
-import time
 import pandas as pd
 import numpy as np
-import csv
+import hashlib
+
+def custom_hash(obj):
+    return int.from_bytes(hashlib.sha256(obj.encode('utf-8')).digest()[:4], 'little')
 
 
 def write_to_csv():
@@ -137,7 +139,7 @@ def calc_case_variants(frame):
     """
     # Case variant collection through hashing
     ddf = frame.groupby('case_id')['Activity'].transform(
-        lambda x: hash(",".join(list(x))))
+        lambda x: custom_hash(",".join(list(x))))
     # ddf = frame.rename(columns={'Activity': 'a_list'})
     # ddf = frame.sort_values('a_list', ascending=False)
     frame['case_variant'] = ddf
