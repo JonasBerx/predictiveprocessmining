@@ -1,4 +1,4 @@
-# Predictive Process Mining: Preprocessing and visualisation
+# Prescriptive Process Mining: Preprocessing and visualisation
 
 This project preprocesses an event log and calculates the activity process time, the cumulative process time and waiting time between activities.
 This DataFrame will then be written to a .CSV log that can be used as output or can be shown in a rudimentary web app. (with (Plotly) Dash)
