@@ -3,9 +3,6 @@ import pandas as pd
 from preprocessing import transform_data
 from visualisation import generate_diagrams, generate_diagrams_waiting_time
 from dash import *
-import pandas as pd
-
-
 
 df = transform_data()
 
@@ -15,7 +12,6 @@ wdfs = dict(tuple(wdf.groupby('case_variant')))
 
 # Make a dict of dataframes, split by case variant
 dfs = dict(tuple(df.groupby('case_variant')))
-
 
 app = Dash(__name__, suppress_callback_exceptions=True,
            external_stylesheets=[dbc.themes.BOOTSTRAP])
@@ -44,12 +40,13 @@ page_1_layout = html.Div(
 
 page_2_layout = html.Div(
     children=[
-        html.H1("Waiting Times visualisation - Violin plot"),
-        dcc.Link('Home', href='/'),
-        html.Br(),
-        dcc.Link('Processing times', href='/pro'),
-    ] + (generate_diagrams_waiting_time(wdfs))
+                 html.H1("Waiting Times visualisation - Violin plot"),
+                 dcc.Link('Home', href='/'),
+                 html.Br(),
+                 dcc.Link('Processing times', href='/pro'),
+             ] + (generate_diagrams_waiting_time(wdfs))
 )
+
 
 # Update the index
 

@@ -41,32 +41,32 @@ def transform_data():
     # Convert start_time and end_time to datetime types
     df.start_time = pd.to_datetime(df.start_time)
     df.end_time = pd.to_datetime(df.end_time)
-    print(df)
+    # print(df)
 
-    startTime = time.time()
+    # startTime = time.time()
     df = calc_case_variants(df)
-    endTime = time.time()
-    print(str(endTime - startTime) + " sec")
+    # endTime = time.time()
+    # print(str(endTime - startTime) + " sec")
 
-    startTime = time.time()
+    # startTime = time.time()
     df = calc_activity_process_time(df)
-    endTime = time.time()
-    print(str(endTime - startTime) + " sec")
+    # endTime = time.time()
+    # print(str(endTime - startTime) + " sec")
 
-    startTime = time.time()
+    # startTime = time.time()
     df = df.groupby(df.case_id).apply(calc_total_process_time_start)
-    endTime = time.time()
-    print(str(endTime - startTime) + " sec")
+    # endTime = time.time()
+    # print(str(endTime - startTime) + " sec")
 
-    startTime = time.time()
+    # startTime = time.time()
     df = df.groupby(df.case_id).apply(calc_total_process_time_end)
-    endTime = time.time()
-    print(str(endTime - startTime) + " sec")
+    # endTime = time.time()
+    # print(str(endTime - startTime) + " sec")
 
-    startTime = time.time()
+    # startTime = time.time()
     df = df.groupby(df.case_id).apply(calc_waiting_time_between)
-    endTime = time.time()
-    print(str(endTime - startTime) + " sec")
+    # endTime = time.time()
+    # print(str(endTime - startTime) + " sec")
 
     return df
 

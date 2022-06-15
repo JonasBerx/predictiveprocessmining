@@ -25,11 +25,11 @@ def generate_violin_plot_waiting_times(df, i):
 
 def generate_diagrams_waiting_time(dict):
     res = [html.H4(children='Data display')]
-    for i in range(0, len(dict)):
-        dff = dict[i]
+    for key, value in dict.items():
+        dff = value
         fig = dcc.Graph(
-            id="case_variant"+str(i),
-            figure=generate_violin_plot_waiting_times(dff, i)
+            id="case_variant"+str(key),
+            figure=generate_violin_plot_waiting_times(dff, key)
         )
         res.append(fig)
 
@@ -47,7 +47,7 @@ def generate_violin_plot(df, i):
                         " Prepare Claim Settlement": 'mediumvioletred',
                         " Approve Claim Settlement": 'cyan',
                         " Execute Claim settlement": 'skyblue',
-                        " Analyze Claim": 'whitesmoke',
+                        " Analyze Claim": 'grey',
                         " Amend Assessment": 'coral',
                         "t": 'magenta',
                         "q": 'pink'
@@ -57,13 +57,12 @@ def generate_violin_plot(df, i):
 
 def generate_diagrams(dict):
     res = [html.H4(children='Data display')]
-    for i in range(0, len(dict)):
-        dff = dict[i]
+    for key, value in dict.items():
+        dff = value
         fig = dcc.Graph(
-            id="case_variant"+str(i),
-            figure=generate_violin_plot(dff, i)
+            id="case_variant"+str(key),
+            figure=generate_violin_plot(dff, key)
         )
         res.append(fig)
-        break
 
     return res
