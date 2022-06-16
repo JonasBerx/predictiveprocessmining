@@ -66,20 +66,23 @@ def generate_violin_plot(df, i, total, total_cases):
 
 def generate_diagrams(dict, total_cases):
     res_tup = []
-    res = [html.H4(children='Data display - Total cases: ' + str(total_cases))]
-    for key, value in dict.items():
+    i = 1
+
+    for value in dict.values():
         total = get_stats(value)
         dff = value
         fig = dcc.Graph(
-            id="case_variant"+str(key),
-            figure=generate_violin_plot(dff, key, total, total_cases)
+            id="case_variant"+str(i),
+            figure=generate_violin_plot(dff, i, total, total_cases)
         )
         # l.append(fig)
         tup = (total, fig)
         res_tup.append(tup)
+        i +=1
 
     # print(res_tup)
     res_tup.sort(key=lambda t: t[0], reverse=True)
+    res = [html.H4(children='Data display - Total cases: ' + str(total_cases) + ' | Total variants: ' + str(len(res_tup)))]
     for (i, j) in res_tup:
         res.append(j)
     # print(res_dict)

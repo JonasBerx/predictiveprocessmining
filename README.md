@@ -72,7 +72,7 @@ Some ideas:
 ## TODO
 Show statistics of dataset:
 - % of cases per case variant + absolute # - Done
-- Sorted list of results (highest occurrence first)
-- Give a meaningful number to case variant (instead of hash) - In progress
+- Sorted list of results (highest occurrence first) - done
+- Give a meaningful number to case variant (instead of hash) - done
 - Visualise by retaining only 50% of plot
 - Try out different plotting technique (Event plot)
