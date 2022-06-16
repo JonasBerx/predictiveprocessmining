@@ -5,6 +5,7 @@ from visualisation import generate_diagrams, generate_diagrams_waiting_time
 from dash import *
 
 df = transform_data()
+total_cases = len(df.drop_duplicates('case_id'))
 
 # Visualize waiting times
 wdf = df[['case_id', 'case_variant', 'Activity', 'waiting_time']]
@@ -35,7 +36,7 @@ page_1_layout = html.Div(
               dcc.Link('Home', href='/'),
               html.Br(),
               dcc.Link('Waiting times', href='/wait'),
-              ] + (generate_diagrams(dfs))
+              ] + (generate_diagrams(dfs, total_cases))
 )
 
 page_2_layout = html.Div(

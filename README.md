@@ -68,3 +68,11 @@ Some ideas:
 - Event plot
 - Bar Chart
 - Other libraries than Dash..
+
+## TODO
+Show statistics of dataset:
+- % of cases per case variant + absolute # - Done
+- Sorted list of results (highest occurrence first)
+- Give a meaningful number to case variant (instead of hash) - In progress
+- Visualise by retaining only 50% of plot
+- Try out different plotting technique (Event plot)

@@ -28,15 +28,17 @@ import numpy as np
 import hashlib
 
 def custom_hash(obj):
-    return int.from_bytes(hashlib.sha256(obj.encode('utf-8')).digest()[:1], 'little')
+    return int.from_bytes(hashlib.sha256(obj.encode('utf-8')).digest()[:2], 'little')
 
 def convert_activity_to_int(frame):
-    frame['Activity'] = frame['Activity'].apply(custom_hash)
+    frame['Activity_id'] = frame['Activity'].apply(custom_hash)
     return frame
+
 
 
 def write_to_csv():
     frame = transform_data()
+
     frame.to_csv('./data/results/data.csv', sep=',', encoding='utf-8', index=False)
 
 
@@ -47,36 +49,37 @@ def transform_data():
     # Convert start_time and end_time to datetime types
     df.start_time = pd.to_datetime(df.start_time)
     df.end_time = pd.to_datetime(df.end_time)
-    # print(df)
-    startTime = time.time()
+
+    print("-----------")
+    start_time = time.time()
     df = convert_activity_to_int(df)
-    endTime = time.time()
-    print(str(endTime - startTime) + " sec")
+    end_time = time.time()
+    print("Activity conversion to numeric values ({}s).".format(end_time - start_time))
 
-    startTime = time.time()
+    start_time = time.time()
     df = calc_case_variants(df)
-    endTime = time.time()
-    print(str(endTime - startTime) + " sec")
+    end_time = time.time()
+    print("Case variant calculation ({}s).".format(end_time - start_time))
 
-    startTime = time.time()
+    start_time = time.time()
     df = calc_activity_process_time(df)
-    endTime = time.time()
-    print(str(endTime - startTime) + " sec")
+    end_time = time.time()
+    print("Activity duration calculation ({}s).".format(end_time - start_time))
 
-    startTime = time.time()
+    start_time = time.time()
     df = df.groupby(df.case_id).apply(calc_total_process_time_start)
-    endTime = time.time()
-    print(str(endTime - startTime) + " sec")
+    end_time = time.time()
+    print("Cumulative process calculation I ({}s).".format(end_time - start_time))
 
-    startTime = time.time()
+    start_time = time.time()
     df = df.groupby(df.case_id).apply(calc_total_process_time_end)
-    endTime = time.time()
-    print(str(endTime - startTime) + " sec")
+    end_time = time.time()
+    print("Cumulative process calculation II ({}s).".format(end_time - start_time))
 
-    startTime = time.time()
+    start_time = time.time()
     df = df.groupby(df.case_id).apply(calc_waiting_time_between)
-    endTime = time.time()
-    print(str(endTime - startTime) + " sec")
+    end_time = time.time()
+    print("Waiting time calculation ({}s).".format(end_time - start_time))
 
     return df
 
@@ -146,7 +149,7 @@ def calc_case_variants(frame):
         - Adding case_variant id to the original dataframe
     """
     # Case variant collection through hashing
-    ddf = frame.groupby('case_id')['Activity'].transform(
+    ddf = frame.groupby('case_id')['Activity_id'].transform(
         lambda x: hash(tuple(x)))
     # ddf = frame.rename(columns={'Activity': 'a_list'})
     # ddf = frame.sort_values('a_list', ascending=False)
@@ -174,3 +177,7 @@ def calc_case_variants(frame):
 
 
 write_to_csv()
+
+
+
+
