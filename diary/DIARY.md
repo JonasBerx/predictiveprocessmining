@@ -111,3 +111,12 @@ Showing a halving in processing time on that first step.
 Meeting day today. 
 I'm mostly focussing on cleaning up this mess a little, updating the READMe with a new more up-to-date demo and refactoring a little code
 Currently I'm trying to make sense of the hashing function so that the results are decently interpretable. I might write a custom hashing method as long as it doesn't impact the processing time.
+
+
+### 16th June 2022
+I spent the day today rewriting some of the code to show more readable information about the dataset without compromising on speed
+Right now the dataset shows a simple number as case variant, the # of occurrences of that variant and the percentual representation of that variant in the total dataset
+The total number of unique cases are also shown in the dataset
+
+Furthermore i found a potential idea to solve the scaling issue of some activities.
+Tomorrow i will focus on showing 1st and 3rd quartile only and then event plots.
