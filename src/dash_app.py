@@ -1,7 +1,7 @@
 import dash_bootstrap_components as dbc
 import pandas as pd
 from preprocessing import transform_data
-from visualisation import generate_diagrams, generate_diagrams_waiting_time
+from visualisation import generate_diagrams, generate_diagrams_waiting_time, generate_box
 from dash import *
 
 df = transform_data()
@@ -28,6 +28,8 @@ index_page = html.Div([
     html.Br(),
     dcc.Link('Waiting times', href='/wait'),
     html.Br(),
+    dcc.Link('Box plots', href='/box'),
+    html.Br(),
 
 ])
 
@@ -48,6 +50,13 @@ page_2_layout = html.Div(
              ] + (generate_diagrams_waiting_time(wdfs))
 )
 
+page_3_layout = html.Div(
+    children=[
+                 html.H1("Box plots (Q1-Q2-Q3)"),
+                 dcc.Link('Home', href='/'),
+             ] + (generate_box(dfs, total_cases))
+)
+
 
 # Update the index
 
@@ -59,6 +68,8 @@ def display_page(pathname):
         return page_1_layout
     elif pathname == '/wait':
         return page_2_layout
+    elif pathname == '/box':
+        return page_3_layout
     else:
         return index_page
     # You could also return a 404 "URL not found" page here

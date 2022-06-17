@@ -7,16 +7,18 @@ pytz~=2021.3
 
 brotli
 
-pandas
-numpy
+pandas~=1.4.2
+numpy~=1.22.4
 
-matplotlib
-plotly
-dash
+matplotlib~=3.5.2
+plotly~=5.8.2
+dash~=2.5.1
 jupyter-dash
 dash_bootstrap_components
 
 scipy
-seaborn
+seaborn~=0.11.2
 
 -e git+https://github.com/AutomatedProcessImprovement/start-time-estimator.git#egg=estimate-start-times
+
+Flask~=2.1.2

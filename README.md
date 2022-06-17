@@ -33,7 +33,7 @@ After running the [preprocessing.py](./src/preprocessing.py) script on this data
 
 - Resulting data: ![Resulting dataset](./pics/dataresult.PNG)
 
-If you choose to run the [app.py](./src/app.py) script, a local Flask server will be started where you can see the visual results of this log.
+If you choose to run the [app.py](./src/dash_app.py) script, a local Flask server will be started where you can see the visual results of this log.
 The data is split by case variant and individually visualised using (Plotly) Dash. Each case variant is represented by a violin plot.
 
 Some examples:
