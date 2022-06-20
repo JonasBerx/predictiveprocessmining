@@ -39,13 +39,13 @@ def convert_activity_to_int(frame):
 def write_to_csv():
     frame = transform_data()
 
-    frame.to_csv('./../data/results/data.csv', sep=',', encoding='utf-8', index=False)
+    frame.to_csv('./data/results/data.csv', sep=',', encoding='utf-8', index=False)
 
 
 def transform_data():
     # Only select columns we actually use here.
     columns = ["case_id", "start_time", "end_time", "Activity"]
-    df = pd.read_csv('./../data/conform_SLA.csv')[columns]
+    df = pd.read_csv('./data/conform_SLA.csv')[columns]
     # Convert start_time and end_time to datetime types
     df.start_time = pd.to_datetime(df.start_time)
     df.end_time = pd.to_datetime(df.end_time)
