@@ -5,6 +5,8 @@ This DataFrame will then be written to a .CSV log that can be used as output or 
 
 You can follow my daily diary log here: [Diary](./diary/DIARY.md)
 
+[Major update](#major-update-1)
+
 ## Setup:
 
 There is a dependency: [Start time estimator](https://github.com/AutomatedProcessImprovement/start-time-estimator) that has to be installed separate.
