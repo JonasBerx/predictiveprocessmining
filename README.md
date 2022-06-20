@@ -74,5 +74,29 @@ Show statistics of dataset:
 - % of cases per case variant + absolute # - Done
 - Sorted list of results (highest occurrence first) - done
 - Give a meaningful number to case variant (instead of hash) - done
-- Visualise by retaining only 50% of plot
-- Try out different plotting technique (Event plot)
+- Visualise by retaining only 50% of plot - done
+- Try out different plotting technique (Event plot) -> Skipped (using Bokeh now.)
+
+## Major update 1:
+___20th June 2022___
+
+Today I reworked the visualisation to use [Bokeh]() as visual library.
+Bokeh was chosen because of its more varied graph selection and customization, as well as its ability to
+display graphs on HTML without too much hassle.
+
+[Reference](https://docs.bokeh.org/en/latest/docs/user_guide/categorical.html#stacking)
+
+Below are two presented showcases:
+
+![Box plot improvement](./pics/bokeh_box.PNG)
+This box plot represents the distribution of the processing time of each activity in minutes. As you can see only
+data between Q1 and Q3 are visualized. This will form the basis of the future representation of the dataset in a format like you can see on the next picture.
+
+![Stacked bar chart](./pics/bokeh_plot%20(1).png)
+This stacked bar chart represents the cases within a case variant. Currently there are some obstacles to resolve before a
+visualisation between different case variants can be shown on one graph.
+However this graph already gives a good representation of how the final product could look like. Each activity is colored
+uniquely. As well as the order of appearance of activities is kept. Thus you can follow the chronological order of the case flow.
+
+The next step is mixing the waiting time between the activities. This will be the biggest challenge now.
+

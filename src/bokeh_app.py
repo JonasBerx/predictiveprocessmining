@@ -9,6 +9,54 @@ from preprocessing import transform_data
 
 df = transform_data()
 output_file("layout.html")
+# TODO https://docs.bokeh.org/en/latest/docs/user_guide/categorical.html
+
+
+from bokeh.io import output_file, show
+from bokeh.plotting import figure
+from bokeh.palettes import GnBu5, OrRd5
+from bokeh.models import ColumnDataSource
+
+output_file("stacked.html")
+
+fruits = ['Apples', 'Pears', 'Nectarines', 'Plums', 'Grapes', 'Strawberries']
+colors = ["#c9d9d3", "#718dbf", "#e84d60"]
+activities = df['Activity'].drop_duplicates().tolist()
+activities = [" Register Claim", " Quick Assessment", " Finalize Assessment", " Approve Assessment",
+              " Prepare Claim Settlement"]
+print(df)
+# df = df.groupby('case_variant').get_group(790337521760341813)
+c1 = df.groupby('Activity').get_group(" Register Claim")
+c2 = df.groupby('Activity').get_group(" Quick Assessment")
+c3 = df.groupby('Activity').get_group(" Finalize Assessment")
+c4 = df.groupby('Activity').get_group(" Approve Assessment")
+c5 = df.groupby('Activity').get_group(" Prepare Claim Settlement")
+# 'activities': df['Activity'].drop_duplicates().tolist(),
+range = df['case_id'].drop_duplicates().tolist()
+range = list(map(str, range))
+data = {'activities': range,
+        " Register Claim": c1.processing_time,
+        " Quick Assessment": c2.processing_time,
+        " Finalize Assessment": c3.processing_time,
+        " Approve Assessment": c4.processing_time,
+        " Prepare Claim Settlement": c5.processing_time,
+        }
+
+print(range)
+
+p = figure(y_range=range, height=1080, x_range=(0, 1000), title="Processing time by case_id")
+
+p.hbar_stack(activities, y='activities', height=0.9, color=OrRd5, source=ColumnDataSource(data),
+             legend_label=["%s exports" % x for x in activities])
+
+p.y_range.range_padding = 0.1
+p.ygrid.grid_line_color = None
+p.legend.location = "top_right"
+p.axis.minor_tick_line_color = None
+p.outline_line_color = None
+
+show(p)
+
 # generate some synthetic time series for six different categories
 # cats = df['Activity'].drop_duplicates().tolist()
 # print(len(cats))
@@ -24,6 +72,7 @@ output_file("layout.html")
 # df = df.groupby('case_variant').get_group(1331063371411158447)
 
 p_list = []
+
 
 def boxplot(df):
     cats = df['Activity'].drop_duplicates().tolist()
@@ -49,7 +98,7 @@ def boxplot(df):
         outx = list(out.index.get_level_values(0))
         outy = list(out.values)
 
-    p = figure(tools="", background_fill_color="#efefef", x_range=cats, toolbar_location=None)
+    p = figure(title="WIP", background_fill_color="#efefef", x_range=cats)
 
     # if no outliers, shrink lengths of stems to be no longer than the minimums or maximums
     qmin = groups.quantile(q=0.00)
