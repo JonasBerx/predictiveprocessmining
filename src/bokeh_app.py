@@ -14,7 +14,7 @@ output_file("layout.html")
 
 from bokeh.io import output_file, show
 from bokeh.plotting import figure
-from bokeh.palettes import GnBu5, OrRd5
+from bokeh.palettes import GnBu5, OrRd5, OrRd9
 from bokeh.models import ColumnDataSource
 
 output_file("stacked.html")
@@ -22,10 +22,10 @@ output_file("stacked.html")
 fruits = ['Apples', 'Pears', 'Nectarines', 'Plums', 'Grapes', 'Strawberries']
 colors = ["#c9d9d3", "#718dbf", "#e84d60"]
 activities = df['Activity'].drop_duplicates().tolist()
-activities = [" Register Claim", " Quick Assessment", " Finalize Assessment", " Approve Assessment",
+activities = [" Register Claim", "Waiting Time", " Quick Assessment","Waiting Time", " Finalize Assessment","Waiting Time", " Approve Assessment","Waiting Time",
               " Prepare Claim Settlement"]
 print(df)
-# df = df.groupby('case_variant').get_group(790337521760341813)
+df = df.groupby('case_variant').get_group(790337521760341813)
 c1 = df.groupby('Activity').get_group(" Register Claim")
 c2 = df.groupby('Activity').get_group(" Quick Assessment")
 c3 = df.groupby('Activity').get_group(" Finalize Assessment")
@@ -33,21 +33,28 @@ c4 = df.groupby('Activity').get_group(" Approve Assessment")
 c5 = df.groupby('Activity').get_group(" Prepare Claim Settlement")
 # 'activities': df['Activity'].drop_duplicates().tolist(),
 range = df['case_id'].drop_duplicates().tolist()
+
+colors = ["#025669", "#D3D3D3", "#718dbf", "#D3D3D3", "#e84d60", "#D3D3D3", "#8673A1", "#D3D3D3", "#015D52"]
+
 range = list(map(str, range))
 data = {'activities': range,
         " Register Claim": c1.processing_time,
+        "Waiting Time": c2.waiting_time,
         " Quick Assessment": c2.processing_time,
+        "Waiting Time": c3.waiting_time,
         " Finalize Assessment": c3.processing_time,
+        "Waiting Time": c4.waiting_time,
         " Approve Assessment": c4.processing_time,
+        "Waiting Time": c5.waiting_time,
         " Prepare Claim Settlement": c5.processing_time,
         }
 
 print(range)
 
-p = figure(y_range=range, height=1080, x_range=(0, 1000), title="Processing time by case_id")
+p = figure(y_range=range, width=1800, height=900, x_range=(0, 10000), title="Processing time by case_id")
 
-p.hbar_stack(activities, y='activities', height=0.9, color=OrRd5, source=ColumnDataSource(data),
-             legend_label=["%s exports" % x for x in activities])
+p.hbar_stack(activities, y='activities', height=0.9, color=colors, source=ColumnDataSource(data),
+             legend_label=["%s" % x for x in activities])
 
 p.y_range.range_padding = 0.1
 p.ygrid.grid_line_color = None
@@ -131,8 +138,8 @@ def boxplot(df):
     # show(p)
 
 
-df = df.groupby('case_variant').apply(boxplot)
-print(len(p_list))
-grid = gridplot(p_list, ncols=2, width=1800, height=600)
+# df = df.groupby('case_variant').apply(boxplot)
+# print(len(p_list))
+# grid = gridplot(p_list, ncols=2, width=1800, height=600)
 
-show(grid)
+# show(grid)
