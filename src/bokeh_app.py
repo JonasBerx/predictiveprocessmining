@@ -4,6 +4,7 @@ import pandas as pd
 from bokeh.layouts import gridplot
 from bokeh.io import output_file, show
 from bokeh.plotting import figure
+from bokeh.models import HoverTool
 
 from preprocessing import transform_data
 
@@ -49,9 +50,20 @@ data = {'activities': range,
         " Prepare Claim Settlement": c5.processing_time,
         }
 
-print(range)
+# print(range)
+tooltips = [
+            ('Case ID', '@activities'),
+            ('Register Claim Duration', '@{ Register Claim}'),
+            ('Quick Assessment Duration', '@{ Quick Assessment}'),
+            ('Finalize Assessment Duration', '@{ Finalize Assessment}'),
+            ('Approve Assessment Duration', '@{ Approve Assessment}'),
+            ('Prepare Claim Settlement Duration', '@{ Prepare Claim Settlement}'),
+            ('Total Waiting Time', '@{Waiting Time}'),
+           ]
 
-p = figure(y_range=range, width=1800, height=900, x_range=(0, 10000), title="Processing time by case_id")
+p = figure(y_range=range, width=1800, height=900, x_range=(-100, 10000), title="Processing time by case_id")
+p.add_tools(HoverTool(tooltips=tooltips))
+
 
 p.hbar_stack(activities, y='activities', height=0.9, color=colors, source=ColumnDataSource(data),
              legend_label=["%s" % x for x in activities])
