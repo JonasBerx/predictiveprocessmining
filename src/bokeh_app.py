@@ -49,7 +49,6 @@ data = {'activities': range,
         "Waiting Time": c5.waiting_time,
         " Prepare Claim Settlement": c5.processing_time,
         }
-
 # print(range)
 tooltips = [
             ('Case ID', '@activities'),
@@ -150,8 +149,8 @@ def boxplot(df):
     # show(p)
 
 
-# df = df.groupby('case_variant').apply(boxplot)
-# print(len(p_list))
-# grid = gridplot(p_list, ncols=2, width=1800, height=600)
-
-# show(grid)
+df = df.groupby('case_variant').apply(boxplot)
+print(len(p_list))
+grid = gridplot(p_list, ncols=2, width=1800, height=600)
+#
+show(grid)
