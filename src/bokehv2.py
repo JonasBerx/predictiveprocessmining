@@ -42,10 +42,11 @@ ana_claim = "#F8CECC"  # Light red
 ame_asse = "#B1DDF0"  # Light blue
 appr_asse = "#BAC8D3"  # Pale aqua
 comb_l = c_list1 + c_list2 + c_list3
-# test = []
-# for i in range(0, 10):
-#     test.append(random.choice(comb_l))
-# print(test)
+test = []
+for i in range(0, 36):
+    test.append(random.choice(comb_l))
+print(test)
+test = test
 
 df_v = df.groupby('case_variant')
 
@@ -61,35 +62,64 @@ for name, grouped in df_v:
     range = list(map(str, grouped['case_id'].drop_duplicates().tolist()))
     print(range)
     data = {'activities': range}
-    act = grouped.groupby(['Activity', "start_time", "case_id"], sort=False)
-    i = 0
+
+    test = grouped.groupby(['Activity'], sort=False)['relative_start_time']
+
+    print(test)
+
+
+
+    # TODO NOTES: How to resolve this issue?
+    #  1. Iteration 1: Only group by activity -> Rework loops get reduced into
+    #  one single activity and are not displayed properly.
+    #  This method will work for the majority of flows though. Since we aim to keep rework as low as possible
+    #  -
+    #  2. Iteration 2: Instead of visualising the representation within one case variant, how can we
+    #  represent a overview of a case variant comparable with other case variants without going into depth.
+    #  -
+    #  3. Iteration 3: Rework to collect all cases, including the ones with a rework loop. The arising issue here is
+    #  finding a way for groupby to not merge rows together -> groupby with more than 1 column.
+    #  Once this is handled the visualisations should be complete and accurate.
+
+
+    # act = grouped.groupby(['Activity'], level=0, sort=False)
+    # act2 = grouped.groupby('case_id', sort=False)
+    # i = 0
     # TODO Right now the start time and case id group by make it so its not able to visualise groups that have more
     #  than 1 case id. Will have to rework a part of this.
-    prev = 0
-    for act_n, group in act:
-        if prev == 0:
-            prev = act_n
-        print(group)
-        print(act_n[2])
-        if act_n[2].all() == prev:
-            # if i != 0:
-            #     colors.append(grey)  # Color for waiting time.
-            #     data["wt" + str(act) + str(i)] = group.waiting_time
-            colors.append(random.choice(comb_l))  # Random color for activity
-            data[act_n[0] + str(i)] = group.processing_time
-            activities.append(act_n[0] + str(i))
-            print(act_n[0] + str(i))
-            i += 1
-        else:
-            prev = act_n
-            i = 0
-            break
+    # for act_n, group in act2:
+    #
+    #     print(act_n)
+    #     print(group)
+    #
+    # prev=0
+    #
+    # for act_n, group in act:
+    #     if prev == 0:
+    #         prev = act_n[2]
+    #     print(group)
+    #     print(act_n[2])
+    #     if act_n[2] == prev:
+    #         if i != 0:
+    #             colors.append(grey)  # Color for waiting time.
+    #             data["wt" + str(act) + str(i)] = group.waiting_time
+            # print(i)
+            # colors.append(random.choice(comb_l))  # Random color for activity
+            # data[act_n[0] + str(i)] = group.processing_time
+            # activities.append(act_n[0] + str(i))
+            # print(act_n[0] + str(i))
+            # i += 1
+        # else:
+        #     prev = act_n[2]
+        #     i = 0
+        #     break
         # print(str(act_n) + " " + str(i))
         # print(group.processing_time)
+    print(colors)
     print(len(activities))
     print(len(colors))
     print(len(data))
-    print(data)
+    # print(data)
 
     p = figure(y_range=range, width=1800, height=900, x_range=(-100, 10000), title="Processing time by case_id")
     p.add_tools(HoverTool(tooltips=tooltips))
