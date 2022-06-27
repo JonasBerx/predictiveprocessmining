@@ -32,21 +32,41 @@ c_list1 = ["#67001f", "#980043", "#ce1256", "#e7298a", "#df65b0", "#c994c7", "#d
 c_list2 = ["#7f0000", "#b30000", "#d7301f", "#ef6548", "#fc8d59", "#fdbb84", "#fdd49e", "#fee8c8", "#fff7ec"]
 c_list3 = ["#00441b", "#006d2c", "#238b45", "#41ae76", "#66c2a4", "#99d8c9", "#ccece6", "#e5f5f9", "#f7fcfd"]
 # Color definitions for each activity:
-grey = "#D3D3D3"  # Waiting time
-reg_claim = "#FFE6CC"  # Light orange
-quick_asse = "#FFF2CC"  # Light yellow
-asse_claim = "#D5E8D4"  # Light green
-fin_asse = "#E1D5E7"  # Light purple
-ame_claim = "#F5F5F5"  # White smoke
-ana_claim = "#F8CECC"  # Light red
-ame_asse = "#B1DDF0"  # Light blue
-appr_asse = "#BAC8D3"  # Pale aqua
-comb_l = c_list1 + c_list2 + c_list3
-test = []
-for i in range(0, 36):
-    test.append(random.choice(comb_l))
-print(test)
-test = test
+waiting = "#D3D3D3"  # Grey
+# reg_claim = "#FFE6CC"  # Light orange
+# quick_asse = "#FFF2CC"  # Light yellow
+# asse_claim = "#D5E8D4"  # Light green
+# fin_asse = "#E1D5E7"  # Light purple
+# ame_claim = "#F5F5F5"  # White smoke
+# ana_claim = "#F8CECC"  # Light red
+# ame_asse = "#B1DDF0"  # Light blue
+# appr_asse = "#BAC8D3"  # Pale aqua
+
+# This dict is currently for showcase. There needs to be a way to dynamically
+# generate colors for unique activities which will then be used for the further processing.
+color_dict = {
+    ' Register Claim': '#FFE6CC',
+    ' Quick Assessment': '#FFF2CC',
+    ' Finalize Assessment': '#E1D5E7',
+    ' Approve Assessment': '#BAC8D3',
+    ' Amend Assessment': '#B1DDF0',
+    ' Assess Claim': '#F8CECC',
+    ' Analyze Claim': '#f7fcfd',
+    ' Amend Claim': '#00441b',
+    ' Prepare Claim Settlement': '#df65b0',
+    ' Approve Claim Settlement': '#BAC8D3',
+    ' Amend Claim Settlement': '#F5F5F5',
+    ' Execute Claim Settlement': '#41ae76',
+    ' Request Customer Info': '"#fdd49e'
+
+}
+
+# comb_l = c_list1 + c_list2 + c_list3
+# test = []
+# for i in range(0, 36):
+#     test.append(random.choice(comb_l))
+# print(test)
+# test = test
 
 df_v = df.groupby('case_variant')
 
@@ -55,19 +75,21 @@ tooltips = [('Case ID', '@activities')]
 p_list = []
 colors = []
 
+
+def intersperse(lst, item):
+    result = [item] * (len(lst) * 2 - 1)
+    result[0::2] = lst
+    return result
+
+
 for name, grouped in df_v:
-    activities = grouped.groupby('case_id').head(100)['Activity'].tolist()
+    activities = grouped.groupby('case_id')['Activity'].head(100).tolist()
+    print("act")
     print(activities)
-    activities = []
+    # activities = []
     range = list(map(str, grouped['case_id'].drop_duplicates().tolist()))
     print(range)
-    data = {'activities': range}
-
-    test = grouped.groupby(['Activity'], sort=False)['relative_start_time']
-
-    print(test)
-
-
+    data = {'cases': range}
 
     # TODO NOTES: How to resolve this issue?
     #  1. Iteration 1: Only group by activity -> Rework loops get reduced into
@@ -81,7 +103,40 @@ for name, grouped in df_v:
     #  finding a way for groupby to not merge rows together -> groupby with more than 1 column.
     #  Once this is handled the visualisations should be complete and accurate.
 
+    for act in activities:
+        colors.append(color_dict[act])
+    colors = intersperse(colors, '#D3D3D3')  # Add waiting time between each activity
+    activities = intersperse(activities, " Waiting Time")
+    print("colros ups")
+    print(colors)
+    print(len(colors))
+    print("acts")
+    print(activities)
+    print(len(activities))
 
+    per_case = grouped.groupby('case_id')
+    prev = -1
+    for val in range:
+        # print(prev)
+        case_df = per_case.get_group(int(val))
+        if prev < 0:
+            prev = case_df['case_id'].drop_duplicates().iloc[0]
+            cur = prev
+        if prev != cur:
+            prev = cur
+        i = 0
+
+        for idx, row in case_df.iterrows():
+            r = row[['Activity', 'processing_time', 'waiting_time']]
+            print(row.Activity)
+            data[' Register Claim'] = row.processing_time
+            data[' Amend Claim'] = row.waiting_time
+            i += 1
+
+        print(data)
+        # print(case_df)
+        # print(case_df[['Activity', 'processing_time']])
+        # print(case_df[['Activity', 'processing_time']])
     # act = grouped.groupby(['Activity'], level=0, sort=False)
     # act2 = grouped.groupby('case_id', sort=False)
     # i = 0
@@ -103,34 +158,35 @@ for name, grouped in df_v:
     #         if i != 0:
     #             colors.append(grey)  # Color for waiting time.
     #             data["wt" + str(act) + str(i)] = group.waiting_time
-            # print(i)
-            # colors.append(random.choice(comb_l))  # Random color for activity
-            # data[act_n[0] + str(i)] = group.processing_time
-            # activities.append(act_n[0] + str(i))
-            # print(act_n[0] + str(i))
-            # i += 1
-        # else:
-        #     prev = act_n[2]
-        #     i = 0
-        #     break
-        # print(str(act_n) + " " + str(i))
-        # print(group.processing_time)
-    print(colors)
-    print(len(activities))
-    print(len(colors))
-    print(len(data))
+    # print(i)
+    # colors.append(random.choice(comb_l))  # Random color for activity
+    # data[act_n[0] + str(i)] = group.processing_time
+    # activities.append(act_n[0] + str(i))
+    # print(act_n[0] + str(i))
+    # i += 1
+    # else:
+    #     prev = act_n[2]
+    #     i = 0
+    #     break
+    # print(str(act_n) + " " + str(i))
+    # print(group.processing_time)
+    # print(colors)
+    # print(len(activities))
+    # print(len(colors))
+    # print(len(data))
     # print(data)
 
     p = figure(y_range=range, width=1800, height=900, x_range=(-100, 10000), title="Processing time by case_id")
     p.add_tools(HoverTool(tooltips=tooltips))
-    p.hbar_stack(activities, y='activities', height=0.9, color=colors, source=ColumnDataSource(data),
+    p.hbar_stack(activities, y='cases', height=0.9, color=colors, source=ColumnDataSource(data),
                  legend_label=["%s" % x for x in activities])
 
     p_list.append(p)
 
     data = {'activities': range}
-
-
+    activities = []
+    colors = []
+    break
 
 grid = gridplot(p_list, ncols=2, width=1800, height=600)
 
