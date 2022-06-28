@@ -74,6 +74,7 @@ df_v = df.groupby('case_variant')
 tooltips = [('Case ID', '@cases')]
 
 p_list = []
+p_dict = {}
 colors = []
 
 
@@ -115,8 +116,8 @@ for name, grouped in df_v:
     i = 0
     for a in ftivities:
         i += 1
-        activities.append(a + str(i))
         activities.append(a + str(i) + 'wt')
+        activities.append(a + str(i))
 
 
 
@@ -124,7 +125,7 @@ for name, grouped in df_v:
     #  0. Try this again but only for one case variant.
     #  1. Iteration 1: Only group by activity -> Rework loops get reduced into
     #  one single activity and are not displayed properly.
-    #  This method will work for the majority of flows though. Since we aim to keep rework as low as possible
+    #  This method will work for the majority of flows though. Since we aim to keep rework as low as possible -> DONE
     #  -
     #  2. Iteration 2: Instead of visualising the representation within one case variant, how can we
     #  represent a overview of a case variant comparable with other case variants without going into depth.
@@ -136,8 +137,8 @@ for name, grouped in df_v:
     # data = ColumnDataSource(data=data)
 
     for act in ftivities:
-        colors.append(color_dict[act])
         colors.append("#f9f9f9")
+        colors.append(color_dict[act])
 
     for case in range:
         i = 0
@@ -146,12 +147,13 @@ for name, grouped in df_v:
 
         for k, v in df:
             i += 1
+
             if k[0] + str(i) in data:
-                data[k[0] + str(i)] += [k[2]]
                 data[k[0] + str(i) + 'wt'] += [k[3]]
+                data[k[0] + str(i)] += [k[2]]
             else:
-                data[k[0] + str(i)] = [k[2]]
                 data[k[0] + str(i) + 'wt'] = [k[3]]
+                data[k[0] + str(i)] = [k[2]]
 
 
             # data[k[0] + str(i)] += [v.processing_time]
@@ -161,10 +163,10 @@ for name, grouped in df_v:
 
     # colors = intersperse(colors, '#f9f9f9')  # Add waiting time between each activity
     # activities = intersperse(activities, " Waiting Time")
-    print(data)
-    print(len(activities))
-    print(len(colors))
-    print(len(ftivities))
+    # print(data)
+    # print(len(activities))
+    # print(len(colors))
+    # print(len(ftivities))
     # print(ftivities)
 
     # -----------------
@@ -202,8 +204,6 @@ for name, grouped in df_v:
     # act = grouped.groupby(['Activity'], level=0, sort=False)
     # act2 = grouped.groupby('case_id', sort=False)
     # i = 0
-    # TODO Right now the start time and case id group by make it so its not able to visualise groups that have more
-    #  than 1 case id. Will have to rework a part of this.
     # for act_n, group in act2:
     #
     #     print(act_n)
@@ -235,15 +235,22 @@ for name, grouped in df_v:
     # print(colors)
     # print(len(activities))
     # print(len(colors))
-    # print(len(data))
+    # print(data)
     # print(data)
 
-    p = figure(y_range=range, width=1800, height=1080, x_range=(-100, 10000), title="Processing time by case_id")
+    # TODO REMOVE LAST ENTRY OF EACH LIST SINCE THIS REPRESENTS WAITING TIME THAT DOES NOT EXIST.
+    activities = activities[1:]
+    colors = colors[1:]
+
+    print(activities)
+    print(colors)
+
+    p = figure(y_range=range, width=1800, height=1080, x_range=(-100, 10000), title="Case Variant ID: " + str(name) + " | # of Occurences: " + str(len(range)))
     p.add_tools(HoverTool(tooltips=tooltips))
     p.hbar_stack(activities, y='cases', height=0.9, color=colors, source=ColumnDataSource(data),
                  legend_label=["%s" % x for x in activities])
 
-    p_list.append(p)
+    p_list.append({'fig': p, 'len': len(range)})
 
     data = {'activities': range}
     activities = []
@@ -251,7 +258,9 @@ for name, grouped in df_v:
     vv+=1
     # if vv == 20:
     #     break
-
-grid = gridplot(p_list, ncols=2, width=1800, height=600)
+newlist = []
+for f in reversed(sorted(p_list, key=lambda d: d['len'])):
+    newlist.append(f['fig'])
+grid = gridplot(newlist, ncols=1, width=1800, height=600)
 
 show(grid)
