@@ -11,6 +11,7 @@ from bokeh.io import output_file, show
 from bokeh.plotting import figure
 from bokeh.palettes import GnBu5, OrRd5, OrRd9
 from bokeh.models import ColumnDataSource, HoverTool
+from itertools import islice
 
 from preprocessing import transform_data
 
@@ -81,17 +82,47 @@ def intersperse(lst, item):
     result[0::2] = lst
     return result
 
+def nth_index(iterable, value, n):
+    matches = (idx for idx, val in enumerate(iterable) if val == value)
+    return next(islice(matches, n-1, n), None)
 
+vv = 0
 for name, grouped in df_v:
-    activities = grouped.groupby('case_id')['Activity'].head(100).tolist()
-    print("act")
-    print(activities)
-    # activities = []
     range = list(map(str, grouped['case_id'].drop_duplicates().tolist()))
     print(range)
     data = {'cases': range}
+    print(len(range))
+
+    ftivities = grouped.groupby('case_id')['Activity'].head(100).tolist()
+    # print(ftivities)
+    rework_to_register = ftivities.count(' Register Claim')
+    print(int(rework_to_register/len(range))+1)
+    if rework_to_register > len(range):
+        idx = nth_index(ftivities, ' Register Claim', int(rework_to_register/len(range))+1)
+        print(idx)
+    else:
+        idx = nth_index(ftivities, ' Register Claim', 2)
+        print(idx)
+
+    print(ftivities)
+    if idx != None:
+        ftivities = ftivities[:idx]
+    else:
+        ftivities = ftivities
+
+    print(ftivities)
+    activities = []
+    i = 0
+    for a in ftivities:
+        i += 1
+        activities.append(a + str(i))
+    # print("act")
+    # print(activities)
+    # activities = []
+
 
     # TODO NOTES: How to resolve this issue?
+    #  0. Try this again but only for one case variant.
     #  1. Iteration 1: Only group by activity -> Rework loops get reduced into
     #  one single activity and are not displayed properly.
     #  This method will work for the majority of flows though. Since we aim to keep rework as low as possible
@@ -103,40 +134,63 @@ for name, grouped in df_v:
     #  finding a way for groupby to not merge rows together -> groupby with more than 1 column.
     #  Once this is handled the visualisations should be complete and accurate.
 
-    for act in activities:
+    # data = ColumnDataSource(data=data)
+
+    for act in ftivities:
         colors.append(color_dict[act])
-    colors = intersperse(colors, '#D3D3D3')  # Add waiting time between each activity
-    activities = intersperse(activities, " Waiting Time")
-    print("colros ups")
-    print(colors)
-    print(len(colors))
-    print("acts")
-    print(activities)
-    print(len(activities))
 
-    per_case = grouped.groupby('case_id')
-    prev = -1
-    for val in range:
-        # print(prev)
-        case_df = per_case.get_group(int(val))
-        if prev < 0:
-            prev = case_df['case_id'].drop_duplicates().iloc[0]
-            cur = prev
-        if prev != cur:
-            prev = cur
+    for case in range:
         i = 0
+        df = grouped.groupby('case_id').get_group(int(case))
+        df = df.groupby(['Activity', 'start_time', 'processing_time'], sort=False)
 
-        for idx, row in case_df.iterrows():
-            r = row[['Activity', 'processing_time', 'waiting_time']]
-            print(row.Activity)
-            data[' Register Claim'] = row.processing_time
-            data[' Amend Claim'] = row.waiting_time
+        for k, v in df:
             i += 1
+            if k[0] + str(i) in data:
+                data[k[0] + str(i)] += [k[2]]
+            else:
+                data[k[0] + str(i)] = [k[2]]
 
-        print(data)
-        # print(case_df)
-        # print(case_df[['Activity', 'processing_time']])
-        # print(case_df[['Activity', 'processing_time']])
+            # data[k[0] + str(i)] += [v.processing_time]
+            # print(i)
+            # data.stream()
+            # data[' Waiting Time'] = v.waiting_time
+
+    # colors = intersperse(colors, '#f9f9f9')  # Add waiting time between each activity
+    # activities = intersperse(activities, " Waiting Time")
+    print(data)
+    print(ftivities)
+
+    # print("colros ups")
+    # print(colors)
+    # print(len(colors))
+    # print("acts")
+    # print(activities)
+    # print(len(activities))
+    #
+    # per_case = grouped.groupby('case_id')
+    # prev = -1
+    # for val in range:
+    #     # print(prev)
+    #     case_df = per_case.get_group(int(val))
+    #     if prev < 0:
+    #         prev = case_df['case_id'].drop_duplicates().iloc[0]
+    #         cur = prev
+    #     if prev != cur:
+    #         prev = cur
+    #     i = 0
+    #
+    #     for idx, row in case_df.iterrows():
+    #         r = row[['Activity', 'processing_time', 'waiting_time']]
+    #         print(row.Activity)
+    #         data[' Register Claim'] = row.processing_time
+    #         data[' Amend Claim'] = row.waiting_time
+    #         i += 1
+    #
+    #     print(data)
+    # print(case_df)
+    # print(case_df[['Activity', 'processing_time']])
+    # print(case_df[['Activity', 'processing_time']])
     # act = grouped.groupby(['Activity'], level=0, sort=False)
     # act2 = grouped.groupby('case_id', sort=False)
     # i = 0
@@ -176,7 +230,7 @@ for name, grouped in df_v:
     # print(len(data))
     # print(data)
 
-    p = figure(y_range=range, width=1800, height=900, x_range=(-100, 10000), title="Processing time by case_id")
+    p = figure(y_range=range, width=1800, height=1080, x_range=(-100, 10000), title="Processing time by case_id")
     p.add_tools(HoverTool(tooltips=tooltips))
     p.hbar_stack(activities, y='cases', height=0.9, color=colors, source=ColumnDataSource(data),
                  legend_label=["%s" % x for x in activities])
@@ -186,7 +240,9 @@ for name, grouped in df_v:
     data = {'activities': range}
     activities = []
     colors = []
-    break
+    vv+=1
+    # if vv == 20:
+    #     break
 
 grid = gridplot(p_list, ncols=2, width=1800, height=600)
 
