@@ -58,7 +58,7 @@ color_dict = {
     ' Approve Claim Settlement': '#BAC8D3',
     ' Amend Claim Settlement': '#F5F5F5',
     ' Execute Claim Settlement': '#41ae76',
-    ' Request Customer Info': '"#fdd49e'
+    ' Request Customer Info': '#fdd49e'
 
 }
 
@@ -71,7 +71,7 @@ color_dict = {
 
 df_v = df.groupby('case_variant')
 
-tooltips = [('Case ID', '@activities')]
+tooltips = [('Case ID', '@cases')]
 
 p_list = []
 colors = []
@@ -89,36 +89,35 @@ def nth_index(iterable, value, n):
 vv = 0
 for name, grouped in df_v:
     range = list(map(str, grouped['case_id'].drop_duplicates().tolist()))
-    print(range)
+    # print(range)
     data = {'cases': range}
-    print(len(range))
+    # print(len(range))
 
     ftivities = grouped.groupby('case_id')['Activity'].head(100).tolist()
     # print(ftivities)
     rework_to_register = ftivities.count(' Register Claim')
-    print(int(rework_to_register/len(range))+1)
+    # print(int(rework_to_register/len(range))+1)
     if rework_to_register > len(range):
         idx = nth_index(ftivities, ' Register Claim', int(rework_to_register/len(range))+1)
-        print(idx)
+        # print(idx)
     else:
         idx = nth_index(ftivities, ' Register Claim', 2)
-        print(idx)
+        # print(idx)
 
-    print(ftivities)
+    # print(ftivities)
     if idx != None:
         ftivities = ftivities[:idx]
     else:
         ftivities = ftivities
 
-    print(ftivities)
+    # print(ftivities)
     activities = []
     i = 0
     for a in ftivities:
         i += 1
         activities.append(a + str(i))
-    # print("act")
-    # print(activities)
-    # activities = []
+        activities.append(a + str(i) + 'wt')
+
 
 
     # TODO NOTES: How to resolve this issue?
@@ -138,18 +137,22 @@ for name, grouped in df_v:
 
     for act in ftivities:
         colors.append(color_dict[act])
+        colors.append("#f9f9f9")
 
     for case in range:
         i = 0
         df = grouped.groupby('case_id').get_group(int(case))
-        df = df.groupby(['Activity', 'start_time', 'processing_time'], sort=False)
+        df = df.groupby(['Activity', 'start_time', 'processing_time', 'waiting_time'], sort=False)
 
         for k, v in df:
             i += 1
             if k[0] + str(i) in data:
                 data[k[0] + str(i)] += [k[2]]
+                data[k[0] + str(i) + 'wt'] += [k[3]]
             else:
                 data[k[0] + str(i)] = [k[2]]
+                data[k[0] + str(i) + 'wt'] = [k[3]]
+
 
             # data[k[0] + str(i)] += [v.processing_time]
             # print(i)
@@ -159,7 +162,12 @@ for name, grouped in df_v:
     # colors = intersperse(colors, '#f9f9f9')  # Add waiting time between each activity
     # activities = intersperse(activities, " Waiting Time")
     print(data)
-    print(ftivities)
+    print(len(activities))
+    print(len(colors))
+    print(len(ftivities))
+    # print(ftivities)
+
+    # -----------------
 
     # print("colros ups")
     # print(colors)
