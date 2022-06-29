@@ -45,7 +45,7 @@ def write_to_csv():
 def transform_data():
     # Only select columns we actually use here.
     columns = ["case_id", "start_time", "end_time", "Activity"]
-    df = pd.read_csv('./data/conform_SLA.csv')[columns]
+    df = pd.read_csv('./data/nonconform_SLA.csv')[columns]
     # Convert start_time and end_time to datetime types
     df.start_time = pd.to_datetime(df.start_time)
     df.end_time = pd.to_datetime(df.end_time)

@@ -100,7 +100,6 @@ for name, grouped in df_v:
     # print(int(rework_to_register/len(range))+1)
     if rework_to_register > len(range):
         idx = nth_index(ftivities, ' Register Claim', int(rework_to_register/len(range))+1)
-        # print(idx)
     else:
         idx = nth_index(ftivities, ' Register Claim', 2)
         # print(idx)
