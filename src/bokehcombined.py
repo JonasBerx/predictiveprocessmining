@@ -127,6 +127,3 @@ for k, v in data.items():
     mu, std = norm.fit(v)
     # print(mu)
     # print(std)
-
-
-

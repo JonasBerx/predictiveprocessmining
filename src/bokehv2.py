@@ -68,8 +68,9 @@ color_dict = {
 #     test.append(random.choice(comb_l))
 # print(test)
 # test = test
+valid_df = df.groupby('case_variant').filter(lambda x: x['case_id'].nunique() > 3)
 
-df_v = df.groupby('case_variant')
+df_v = valid_df.groupby('case_variant')
 
 tooltips = [('Case ID', '@cases')]
 
@@ -83,13 +84,18 @@ def intersperse(lst, item):
     result[0::2] = lst
     return result
 
+
 def nth_index(iterable, value, n):
     matches = (idx for idx, val in enumerate(iterable) if val == value)
-    return next(islice(matches, n-1, n), None)
+    return next(islice(matches, n - 1, n), None)
+
+
+max_l = []
 
 vv = 0
 for name, grouped in df_v:
     range = list(map(str, grouped['case_id'].drop_duplicates().tolist()))
+
     # print(range)
     data = {'cases': range}
     # print(len(range))
@@ -99,7 +105,7 @@ for name, grouped in df_v:
     rework_to_register = ftivities.count(' Register Claim')
     # print(int(rework_to_register/len(range))+1)
     if rework_to_register > len(range):
-        idx = nth_index(ftivities, ' Register Claim', int(rework_to_register/len(range))+1)
+        idx = nth_index(ftivities, ' Register Claim', int(rework_to_register / len(range)) + 1)
     else:
         idx = nth_index(ftivities, ' Register Claim', 2)
         # print(idx)
@@ -118,8 +124,6 @@ for name, grouped in df_v:
         activities.append(a + str(i) + 'wt')
         activities.append(a + str(i))
 
-
-
     # TODO NOTES: How to resolve this issue?
     #  0. Try this again but only for one case variant.
     #  1. Iteration 1: Only group by activity -> Rework loops get reduced into
@@ -136,12 +140,15 @@ for name, grouped in df_v:
     # data = ColumnDataSource(data=data)
 
     for act in ftivities:
-        colors.append("#f9f9f9")
+        colors.append("#707070")
         colors.append(color_dict[act])
 
     for case in range:
         i = 0
         df = grouped.groupby('case_id').get_group(int(case))
+
+        max_l.extend(df.iloc[-1:].relative_end_time.tolist())  # Append last item processing time to list
+
         df = df.groupby(['Activity', 'start_time', 'processing_time', 'waiting_time'], sort=False)
 
         for k, v in df:
@@ -154,11 +161,17 @@ for name, grouped in df_v:
                 data[k[0] + str(i) + 'wt'] = [k[3]]
                 data[k[0] + str(i)] = [k[2]]
 
+    res = list(zip(range, max_l))
+    print(res)
 
-            # data[k[0] + str(i)] += [v.processing_time]
-            # print(i)
-            # data.stream()
-            # data[' Waiting Time'] = v.waiting_time
+    res = sorted(res, key=lambda tup: tup[1], reverse=True)
+    print(res)
+    range = [x[0] for x in res]
+
+    # data[k[0] + str(i)] += [v.processing_time]
+    # print(i)
+    # data.stream()
+    # data[' Waiting Time'] = v.waiting_time
 
     # colors = intersperse(colors, '#f9f9f9')  # Add waiting time between each activity
     # activities = intersperse(activities, " Waiting Time")
@@ -241,10 +254,11 @@ for name, grouped in df_v:
     activities = activities[1:]
     colors = colors[1:]
 
-    print(activities)
-    print(colors)
+    # print(activities)
+    # print(colors)
 
-    p = figure(y_range=range, width=1800, height=1080, x_range=(-100, 10000), title="Case Variant ID: " + str(name) + " | # of Occurences: " + str(len(range)))
+    p = figure(y_range=range, width=1800, height=1080, x_range=(-100, 15000),
+               title="Case Variant ID: " + str(name) + " | # of Occurences: " + str(len(range)))
     p.add_tools(HoverTool(tooltips=tooltips))
     p.hbar_stack(activities, y='cases', height=0.9, color=colors, source=ColumnDataSource(data),
                  legend_label=["%s" % x for x in activities])
@@ -254,7 +268,8 @@ for name, grouped in df_v:
     data = {'activities': range}
     activities = []
     colors = []
-    vv+=1
+    max_l = []
+    vv += 1
     # if vv == 20:
     #     break
 newlist = []
