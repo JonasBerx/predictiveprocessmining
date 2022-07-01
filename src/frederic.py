@@ -30,14 +30,10 @@ from preprocessing import transform_data
 df = transform_data()
 output_file("fre.html")
 
-
-def ridge(category, data, scale=20):
-    return list(zip([category] * len(data), scale * data))
-
-
 p_list = []
 
 valid_df = df.groupby('case_variant').filter(lambda x: x['case_id'].nunique() > 3)
+all_cases = valid_df.case_id.drop_duplicates().tolist()
 
 df_c = valid_df.groupby('case_variant')
 
@@ -47,7 +43,6 @@ for name, value in df_c:
 
     data = {}
     cases = list(map(int, value['case_id'].drop_duplicates().tolist()))
-
     for case in cases:
         # print(case)
         # print(data)
@@ -67,19 +62,21 @@ for name, value in df_c:
                 data[(k[0]).strip() + str(i) + 'wt'] = [k[3]]
                 data[(k[0]).strip() + str(i)] = [k[2]]
 
+
     categories = list(data.keys())
-    print("----")
+    # print("----")
     # print(name)
     # print(cases)
     # print(value)
     # print(data)
     # print(categories)
-    p = figure(y_range=categories)
-    for act, l in data.items():
-        print(categories)
-        print(l)
-
-        p.hbar(y=cases, right=l)
-
-    show(p)
     break
+print(name)
+print(data)
+
+p = figure(x_range=list(map(str, cases)), title="test")
+for n in data:
+    print(data[n])
+    p.hbar(y=name, left=min(data[n]), right=max(data[n]), height=0.4)
+
+show(p)
