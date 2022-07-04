@@ -45,7 +45,7 @@ def write_to_csv():
 def transform_data():
     # Only select columns we actually use here.
     columns = ["case_id", "start_time", "end_time", "Activity"]
-    df = pd.read_csv('./data/Claims_Management_Simplified.csv')[columns]
+    df = pd.read_csv('./data/no_reworks.csv')[columns]
     # Convert start_time and end_time to datetime types
     df.start_time = pd.to_datetime(df.start_time)
     df.end_time = pd.to_datetime(df.end_time)

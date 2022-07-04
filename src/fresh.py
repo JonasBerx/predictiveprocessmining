@@ -1,5 +1,7 @@
+import sys
+
 from bokeh.io import show
-from bokeh.models import ColumnDataSource
+from bokeh.models import ColumnDataSource, HoverTool, Div
 from bokeh.plotting import figure
 import random
 
@@ -10,7 +12,7 @@ from preprocessing import transform_data
 # Preprocessing and only retain case variants that have more than 3 occurrences
 df = transform_data()
 all_activities = df.Activity.drop_duplicates().tolist()
-df = df.groupby('case_variant').filter(lambda x: x['case_id'].nunique() > 5)
+df = df.groupby('case_variant').filter(lambda x: x['case_id'].nunique() > 0)
 
 # TODO 1: Color Dictionary for activities
 # TODO 2: Get Q1 and Q3 for each activity in each case variant
@@ -36,30 +38,55 @@ df = df.groupby('case_variant').filter(lambda x: x['case_id'].nunique() > 5)
 """
 
 color_dict = {
-    'Register Claim': '#00ff99',
-    'Quick Assessment': '#00ffff',
-    'Analyze Claim': '#3399ff',
-    'Assess Claim': '#9966ff',
-    'Amend Claim': '#00441b',
-    'Approve Assessment': '#993366',
-    'Amend Assessment': '#ff0000',
-    'Finalize Assessment': '#ff9933',
-    'Prepare Claim Settlement': '#ffff00',
-    'Approve Claim Settlement': '#003366',
-    'Amend Claim Settlement': '#669900',
-    'Execute Claim Settlement': '#663300',
-    'Request Customer Info': '#ff9900'
+    'Register Claim': (0, 255, 153, 0.4),
+    'Quick Assessment': (0, 255, 255, 0.4),
+    'Analyze Claim': (51, 153, 255, 0.4),
+    'Assess Claim': (153, 102, 255, 0.4),
+    'Amend Claim': (0, 68, 27, 0.4),
+    'Approve Assessment': (153, 51, 102, 0.4),
+    'Amend Assessment': (255, 0, 0, 0.4),
+    'Finalize Assessment': (255, 153, 51, 0.4),
+    'Prepare Claim Settlement': (255, 255, 0, 0.4),
+    'Approve Claim Settlement': (0, 51, 102, 0.4),
+    'Amend Claim Settlement': (102, 153, 0, 0.4),
+    'Execute Claim Settlement': (102, 51, 0, 0.4),
+    'Request Customer Info': (255, 153, 0, 0.4),
 }
 
 present_activities = df.Activity.drop_duplicates().tolist()
 data = {}
 variants = list(map(str, df.case_variant.drop_duplicates().tolist()))
 data['variants'] = variants
+
+print(present_activities)
+
+for act in present_activities:
+    data[act + "_START"] = []
+    data[act + "_END"] = []
+
+min_val = sys.maxsize
+max_val = -sys.maxsize - 1
+
 for name, value in df.groupby('case_variant'):
     cases = list(map(int, value['case_id'].drop_duplicates().tolist()))
-    print(cases)
+    cv_activities = value['Activity'].drop_duplicates().tolist()
+    print(cv_activities)
+    # print(cases)
     # print(value)
-    data[name] = {}
+    for act, info in value.groupby(['Activity'], sort=False):
+        # Define min and max value for Activity
+        if info.relative_start_time.min() < min_val:
+            max_val = info.relative_start_time.min()
+        if info.relative_end_time.max() > max_val:
+            min_val = info.relative_end_time.max()
+
+        data[act + "_START"].append(min_val)
+        data[act + "_END"].append(max_val)
+
+    for act2 in present_activities:
+        if act2 not in cv_activities:
+            data[act2 + "_START"].append(-1)
+            data[act2 + "_END"].append(-1)
 
     # for case in cases:
     #     print(case)
@@ -74,19 +101,32 @@ from bokeh.plotting import figure, show
 from bokeh.models import FactorRange
 
 case_v = ['1', '2', '3']
-counts = [5, 3, 7, 5, 3, 7, 5, 3, 7, 5, 3, 7, 5, 3, 7]
-counts2 = [3, 2, 5, 3, 2, 5, 3, 2, 5, 3, 2, 5, 3, 2, 5]
-counts3 = [9, 11, 12, 9, 11, 12, 9, 11, 12, 9, 11, 12, 9, 11, 12]
-counts4 = [6, 4, 10, 6, 4, 10, 6, 4, 10, 6, 4, 10, 6, 4, 10]
+# counts = [5, 3, 7, 5, 3]  # 7, 5, 3, 7, 5, 3, 7, 5, 3, 7]
+# counts2 = [3, 2, 5, 3, 2]  # 5, 3, 2, 5, 3, 2, 5, 3, 2, 5]
+# counts3 = [9, 11, 12, 9, 11]  # 12, 9, 11, 12, 9, 11, 12, 9, 11, 12]
+# counts4 = [6, 4, 10, 6, 4]  # 10, 6, 4, 10, 6, 4, 10, 6, 4, 10]
+#
+# counts5 = [10, 0, 15, 10, 0]  # 15, 10, 0, 15, 10, 0, 15, 10, 0, 15]
+# counts6 = [9, -1, 13, 9, -1]  # 13, 9, -1, 13, 9, -1, 13, 9, -1, 13]
 
-counts5 = [10, 0, 15, 10, 0, 15, 10, 0, 15, 10, 0, 15, 10, 0, 15]
-counts6 = [9, -1, 13, 9, -1, 13, 9, -1, 13, 9, -1, 13, 9, -1, 13]
-
-p = figure(y_range=FactorRange(factors=data['variants']), x_range=(0, 20), plot_height=950,
+p = figure(y_range=FactorRange(factors=data['variants']), x_range=(0, 5000), plot_height=700, plot_width=1600,
            title="Case variant comparison")
 
-p.hbar(y=data['variants'], right=counts, left=counts2, height=0.8, color="#132456")
-p.hbar(y=data['variants'], right=counts3, left=counts4, height=0.8, color="#AAAAAA")
-p.hbar(y=data['variants'], right=counts5, left=counts6, height=0.8, color="#666666")
+for act in present_activities:
+    p.hbar(y=data['variants'], right=data[act + "_END"], left=data[act + "_START"], height=0.8, color=color_dict[act],
+           legend_label=act)
+
+# tooltips = [('Case Variant', '@variant')]
+
+# p.add_tools(HoverTool())
+
+div = Div(text="""Some information regarding the dataset:""",
+width=200, height=100)
+
+show(div)
+
+# p.hbar(y=data['variants'], right=counts, left=counts2, height=0.8, color="#132456")
+# p.hbar(y=data['variants'], right=counts3, left=counts4, height=0.8, color="#AAAAAA")
+# p.hbar(y=data['variants'], right=counts5, left=counts6, height=0.8, color="#666666")
 
 show(p)
