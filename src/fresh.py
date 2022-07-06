@@ -81,13 +81,16 @@ for name, value in df.groupby('case_variant'):
         print(info.relative_end_time.quantile([.25, .75]))
         print(info.relative_end_time.mean())
         # APPROACH 1: MEAN
-        data[act + "_START"].append(info.relative_start_time.mean())
-        data[act + "_END"].append(info.relative_end_time.mean())
+        # data[act + "_START"].append(info.relative_start_time.mean())
+        # data[act + "_END"].append(info.relative_end_time.mean())
 
         # APPROACH 2: MEDIAN
         # data[act + "_START"].append(info.relative_start_time.median())
         # data[act + "_END"].append(info.relative_end_time.median())
 
+        # APPROACH 3: Quantile 1 and Quantile 3
+        data[act + "_START"].append(info.relative_start_time.quantile(.25))
+        data[act + "_END"].append(info.relative_end_time.quantile(.75))
 
         # APPROACH 3: Define min and max value for Activity
         # if info.relative_start_time.min() < min_val:
